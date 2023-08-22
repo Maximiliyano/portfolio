@@ -1,0 +1,31 @@
+.skills-main {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 20px;
+}
+
+.skills-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.skills-header {
+  font-size: 30px;
+  text-align: center;
+}
+
+.skill-icons {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-description {
+  flex: 1;
+}
+
+.skill-subtitle {
+  font-size: 18px;
+}

@@ -1,0 +1,34 @@
+<div [ngClass]="{ 'sticky-header': isSticky, 'shrink-header': isSticky }">
+  <div class="header" [@headerAnimation]>
+    <mat-toolbar class="header-content">
+      <div class="header-title" routerLink="">
+        Portfolio
+      </div>
+
+      <div *ngIf="isMenuExpanded" class="menu-items" [@fadeInOut]>
+        <button mat-flat-button color="primary" routerLink="/about">About</button>
+        <button mat-flat-button color="primary" routerLink="/education">Education</button>
+        <button mat-flat-button color="primary" routerLink="/experience">Experience</button>
+        <button mat-flat-button color="primary" routerLink="/projects">Projects</button>
+        <button mat-flat-button color="primary" routerLink="/skills">Skills</button>
+        <button mat-flat-button color="primary" routerLink="/contact">Contact</button>
+      </div>
+
+      <button id="menu-button" mat-icon-button (click)="toggleMenu()">
+        <mat-icon [@menuAnimation]="isMenuExpanded ? 'expanded' : 'closed'">
+          {{ isMenuExpanded ? 'close' : 'menu' }}
+        </mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div class="footer">
+  <app-footer></app-footer>
+</div>
