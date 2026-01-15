@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
+import { Header } from "./Header";
 
-export const MainLayout = () => {
+export const Main = () => {
   return (
     <>
-      <Navbar />
+      <Header />
       <main className="pt-20">
         <Outlet />
       </main>
