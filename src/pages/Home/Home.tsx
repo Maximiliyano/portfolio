@@ -6,9 +6,9 @@ export const Home = () => {
     return (
         <Section>
             <Container>
-                <h1 className="text-5xl md:text-6xl font-bold">Design System</h1>
+                <h1 className="text-5xl md:text-6xl font-bold">Welcome</h1>
                 <p className="text-base text-gray-300">
-                    Everything is consistent
+                    This is the home page of our application.
                 </p>
                 <Button>Primary</Button>
             </Container>
