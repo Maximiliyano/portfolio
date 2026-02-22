@@ -5,6 +5,7 @@ import skills from "../../data/skills";
 import experience, { type ExperienceItem } from "../../data/experience";
 import SkillGroup from "../../components/skills/SkillGroup";
 import ResumeButton from "../../components/ui/ResumeButton";
+import photo from "../../assets/photo.jpg";
 
 import { Container } from "../../components/layout/Container";
 import { Section } from "../../components/layout/Section";
@@ -23,7 +24,7 @@ export const Home = () => {
             <Section>
                 <Container id="hero" className="flex items-center gap-6 border-b py-4">
                     <div className="w-40 h-40">
-                        <img src="/src/assets/photo.jpg" alt="Photo" className="w-40 h-40 object-cover rounded-full" />
+                        <img src={photo} alt="Photo" className="w-40 h-40 object-cover rounded-full" />
                     </div>
                     <div className="flex-1">
                         <div className="flex items-center gap-3">

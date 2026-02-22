@@ -1,5 +1,6 @@
 import ResumeButton from '../components/ui/ResumeButton';
 import ThemeToggle from '../components/ui/ThemeToggle';
+import logo from '../assets/favicon.ico';
 
 // TODO: make contact me as a block with list of info
 // TODO: add navigation to each block of the home page
@@ -11,7 +12,7 @@ export const Header = () => {
         >
             <div className="flex justify-between items-center w-full max-w-6xl px-4 py-3">
                 <a href="#hero" aria-label="Portfolio Logo" className="flex items-center gap-2">
-                    <img src="/src/assets/favicon.ico" alt="Logo" className="w-6 h-6" />
+                    <img src={logo} alt="Logo" className="w-6 h-6" />
                     <span className="font-semibold">Portfolio</span>
                 </a>
 
