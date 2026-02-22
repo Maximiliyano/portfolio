@@ -1,1 +1,62 @@
 @import "tailwindcss";
+
+@import "tailwindcss";
+
+:root {
+    --bg: #ffffff;
+    --text: #0f172a;
+    --muted: #6b7280;
+    --surface: #ffffff;
+}
+
+.dark {
+    --bg: #071224;
+    --text: #e6eef6;
+    --muted: #94a3b8;
+    --surface: #0b1220;
+}
+
+html,
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 320ms ease, color 320ms ease;
+
+    .animate-pulse-slow {
+        animation: pulse-slow 2.8s infinite ease-in-out;
+    }
+
+    /* Resume button animation helpers */
+    @keyframes pulse-slow {
+        0% {
+            transform: scale(1);
+            opacity: 1
+        }
+
+        50% {
+            transform: scale(1.08);
+            opacity: .6
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1
+        }
+    }
+
+    /* SkillGroup item fade/slide animation */
+    .skill-list {
+        overflow: hidden;
+    }
+
+    .skill-list-item {
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 360ms ease, transform 360ms ease;
+    }
+
+    .skill-list-expanded .skill-list-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
