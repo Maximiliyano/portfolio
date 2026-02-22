@@ -9,7 +9,6 @@ export type Project = {
     tech: string[];
     responsibilities: string[];
     images: string[];
-    links?: { demo?: string; repo?: string };
 };
 
 export const projects: Project[] = [
@@ -29,8 +28,7 @@ export const projects: Project[] = [
             'Troubleshot system issues using Application Insights',
             'Integrated with internal investment management systems',
             'Improved project list rendering by 50% through caching and API optimization'
-        ],
-        links: {}
+        ]
     },
     {
         id: 'asset-market-management',
@@ -48,8 +46,7 @@ export const projects: Project[] = [
             'Analyzed logs across VMs to extract system insights',
             'Refactored validation models and Razor views',
             'Led sprint planning and technical design sessions'
-        ],
-        links: {}
+        ]
     },
     {
         id: 'video-monitoring',
@@ -67,8 +64,7 @@ export const projects: Project[] = [
             'Developed and tested HTTP client layer with xUnit',
             'Designed YAML configuration processing service',
             'Managed manual CI/CD deployments to client servers'
-        ],
-        links: {}
+        ]
     },
     {
         id: 'vessel-traffic-management',
@@ -85,8 +81,7 @@ export const projects: Project[] = [
             'Developed automatic tests (Unit, E2E, Integration, UI)',
             'Maintained nightly test runs and fixed failures',
             'Coordinated tasks and refactored code for stability'
-        ],
-        links: {}
+        ]
     }
 ];
 

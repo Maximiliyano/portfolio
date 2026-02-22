@@ -4,12 +4,22 @@ export type ExperienceItem = {
     role: string;
     start: string;
     end?: string;
-    location?: string;
+    location?: 'Hybrid' | 'Remote';
     bullets: string[];
     tech?: string[];
 };
 
 export const experience: ExperienceItem[] = [
+    {
+        company: 'Coherent Solutions, Inc.',
+        companyLogo: 'https://www.coherentsolutions.com/hubfs/favicon-96x96.png',
+        role: 'Software Developer',
+        start: 'Feb 2026',
+        end: 'Present',
+        location: 'Remote',
+        bullets: [],
+        tech: ['.NET Core', 'Azure', 'Angular']
+    },
     {
         company: 'DataArt Solutions, Inc.',
         companyLogo: 'https://www.dataart.com/favicon.ico',

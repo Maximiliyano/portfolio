@@ -10,8 +10,8 @@ const ResumeButton: React.FC<Props> = ({ href = 'https://drive.google.com/file/d
             href={href}
             target="_blank"
             rel="noreferrer"
-            aria-label="Download resume"
-            className="resume-btn inline-flex items-center gap-3 px-4 py-2 rounded-lg bg-gradient-to-r from-teal-500 to-teal-400 text-white shadow-lg transform transition hover:scale-[1.02] active:scale-100 focus:outline-none focus:ring-4 focus:ring-teal-300"
+            aria-label="Redirect to resume"
+            className="resume-btn inline-flex items-center gap-3 px-4 py-2 rounded-lg bg-linear-to-r from-teal-500 to-teal-400 text-white shadow-lg transform transition hover:scale-[1.02] active:scale-100 focus:outline-none focus:ring-4 focus:ring-teal-300"
         >
             <span className="relative w-6 h-6 flex items-center justify-center">
                 <span className="absolute inset-0 rounded-full animate-pulse-slow bg-white/10" />

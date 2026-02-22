@@ -72,42 +72,36 @@ export const ProjectDetail: React.FC<Props> = ({ project, onClose }) => {
                     </div>
                 )}
 
-                <h3 className="text-2xl font-bold">{project.title}</h3>
                 <div className="flex justify-between">
-                    <div className="inline-flex gap-2 items-center">
-                        <img src={project.companyLogo} alt="company logo" className="w-6 h-6 rounded-full" />
-                        <p className="text-sm text-gray-500 dark:text-gray-400">{project.company} · {project.period}</p>
-                    </div>
+                    <h3 className="text-2xl font-bold">{project.title}</h3>
 
                     {project.role && (
-                        <div className="text-sm text-gray-600 dark:text-gray-300 whitespace-nowrap bg-gray-100 dark:bg-slate-700 px-2 py-1 rounded">{project.role}</div>
+                        <p className="font-semibold text-sm text-white dark:text-gray-300 whitespace-nowrap bg-blue-500 dark:bg-slate-700 px-2 py-1 rounded">
+                            {project.role}
+                        </p>
                     )}
                 </div>
 
-                <h4 className="mt-4 font-semibold text-sm text-gray-700 dark:text-gray-300">Overview:</h4>
-                <p className="mt-2 text-gray-700 dark:text-gray-200">{project.summary}</p>
+                <div className="inline-flex gap-2 items-center">
+                    <img src={project.companyLogo} alt="company logo" className="w-6 h-6 rounded-full" />
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{project.company} · {project.period}</p>
+                </div>
 
-                <h4 className="mt-4 font-semibold text-sm text-gray-700 dark:text-gray-300">Responsibilities:</h4>
-                <ul className="list-disc pl-5 mt-2 text-sm text-gray-700 dark:text-gray-200">
+                <h4 className="mt-3 font-semibold text-sm text-gray-400 dark:text-gray-300">Overview:</h4>
+                <p className="text-gray-700 dark:text-gray-200 mt-1">{project.summary}</p>
+
+                <h4 className="mt-3 font-semibold text-sm text-gray-400 dark:text-gray-300">Responsibilities:</h4>
+                <ul className="list-disc pl-5 text-gray-700 dark:text-gray-200 mt-1">
                     {project.responsibilities.map((r, i) => (
                         <li key={i}>{r}</li>
                     ))}
                 </ul>
 
-                <h4 className="mt-4 font-semibold text-sm text-gray-700 dark:text-gray-300">Technologies:</h4>
-                <div className="mt-2 flex flex-wrap gap-2">
+                <h4 className="mt-3 font-semibold text-sm text-gray-400 dark:text-gray-300">Technologies:</h4>
+                <div className="flex flex-wrap gap-2 mt-1">
                     {project.tech.map((t) => (
-                        <span key={t} className="px-2 py-1 border border-blue-600 bg-slate-800 dark:bg-slate-800 text-gray-800 dark:text-gray-200 rounded text-xs">{t}</span>
+                        <span key={t} className="px-2 py-1 border border-blue-600 bg-slate-300 dark:bg-slate-800 text-black dark:text-gray-200 rounded text-xs">{t}</span>
                     ))}
-                </div>
-
-                <div className="mt-6 flex gap-3">
-                    {project.links?.demo && (
-                        <a href={project.links.demo} target="_blank" rel="noreferrer" className="px-4 py-2 bg-teal-500 text-white rounded">View Demo</a>
-                    )}
-                    {project.links?.repo && (
-                        <a href={project.links.repo} target="_blank" rel="noreferrer" className="px-4 py-2 border border-gray-300 dark:border-slate-600 rounded text-gray-800 dark:text-gray-100">View Code</a>
-                    )}
                 </div>
             </div>
         </div>

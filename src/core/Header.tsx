@@ -11,8 +11,8 @@ export const Header = () => {
             style={{ backgroundColor: 'var(--surface)', color: 'var(--text)', borderBottom: '1px solid rgba(0,0,0,0.06)' }}
         >
             <div className="flex justify-between items-center w-full max-w-6xl px-4 py-3">
-                <a href="#hero" aria-label="Portfolio Logo" className="flex items-center gap-2">
-                    <img src={logo} alt="Logo" className="w-6 h-6" />
+                <a href="/" aria-label="Portfolio Logo" className="flex items-center gap-2">
+                    <img src={logo} alt="Logo" className="w-6 h-6 dark:border dark:border-white" />
                     <span className="font-semibold">Portfolio</span>
                 </a>
 
@@ -20,10 +20,7 @@ export const Header = () => {
                 <a href='#experience' className="text-sm">Experience</a>
                 <a href='#skills' className="text-sm">Skills</a>
 
-                <nav className="hidden md:flex gap-6 items-center">
-                    <ResumeButton />
-                    <ThemeToggle />
-                </nav>
+                <ResumeButton />
             </div>
         </header>
     );

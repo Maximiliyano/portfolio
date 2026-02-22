@@ -28,7 +28,7 @@ export const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">{project.title}</h3>
 
                     {project.role && (
-                        <div className="text-sm text-gray-600 dark:text-gray-300 ml-2 whitespace-nowrap bg-gray-100 dark:bg-slate-700 px-2 py-1 rounded">{project.role}</div>
+                        <div className="text-sm text-white dark:text-gray-300 whitespace-nowrap bg-blue-500 dark:bg-slate-700 px-2 py-1 rounded">{project.role}</div>
                     )}
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-3">{project.summary}</p>
