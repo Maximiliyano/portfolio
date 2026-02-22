@@ -1,7 +1,5 @@
 import ResumeButton from '../components/ui/ResumeButton';
 import ThemeToggle from '../components/ui/ThemeToggle';
-import { FaEnvelope, FaPhone, FaGithub } from 'react-icons/fa';
-import site from '../data/site';
 
 // TODO: make contact me as a block with list of info
 // TODO: add navigation to each block of the home page
