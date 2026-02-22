@@ -1,9 +1,6 @@
 import ResumeButton from '../components/ui/ResumeButton';
-import ThemeToggle from '../components/ui/ThemeToggle';
 import logo from '../assets/favicon.ico';
 
-// TODO: make contact me as a block with list of info
-// TODO: add navigation to each block of the home page
 export const Header = () => {
     return (
         <header
