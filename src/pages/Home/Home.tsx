@@ -51,20 +51,23 @@ export const Home: React.FC = () => {
             <Header />
 
             <Section>
-                <Container id="hero" className="flex items-center gap-6 border-b border-gray-200 dark:border-slate-700 py-4">
-                    <div className="w-40 h-40">
-                        <img src={photo} loading="lazy" alt="Photo" className="w-40 h-40 object-cover rounded-full" />
+                <Container id="hero" className="flex flex-col sm:flex-row items-start gap-6 border-b border-gray-200 dark:border-slate-700 py-6">
+                    <div className="shrink-0 mx-auto sm:mx-0">
+                        <img src={photo} loading="lazy" alt={site.name} className="w-28 h-36 sm:w-36 sm:h-44 object-cover rounded-xl border border-gray-200 dark:border-slate-600 shadow-md" />
                     </div>
-                    <div className="flex-1">
-                        <div className="flex items-center gap-3">
-                            <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-50">{site.name}</h1>
-                            <span className={`inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full ${site.openToOpportunities ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-800 dark:text-emerald-100' : 'bg-red-700 text-white dark:text-white-300'}`}>
+                    <div className="flex-1 min-w-0">
+                        <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-50">{site.name}</h1>
+                        <div className="mt-1.5 mb-3">
+                            <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-medium rounded-full ${site.openToOpportunities ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300' : 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300'}`}>
+                                <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${site.openToOpportunities ? 'bg-emerald-500' : 'bg-red-500'}`} />
                                 {site.openToOpportunities ? 'Open to opportunities' : 'Not in active search'}
                             </span>
                         </div>
-                        <p className="mb-1 text-lg text-gray-700 dark:text-gray-300">{site.title} · {site.location}</p>
-                        <ContactLinks />
-                        <p className="mt-3 mb-4 text-sm text-gray-700 dark:text-gray-200">{site.coverletter}</p>
+                        <p className="text-base text-gray-600 dark:text-gray-400">{site.title} · {site.location}</p>
+                        <p className="mt-2 mb-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{site.coverletter}</p>
+                        <div className="mb-4">
+                            <ContactLinks variant="block" />
+                        </div>
                         <ResumeButton />
                     </div>
                 </Container>
