@@ -43,18 +43,3 @@ body {
         opacity: 1;
     }
 }
-
-.skill-list {
-    overflow: hidden;
-}
-
-.skill-list-item {
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 360ms ease, transform 360ms ease;
-}
-
-.skill-list-expanded .skill-list-item {
-    opacity: 1;
-    transform: translateY(0);
-}

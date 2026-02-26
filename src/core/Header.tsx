@@ -48,7 +48,7 @@ export const Header = () => {
                     ))}
                 </nav>
 
-                <ResumeButton />
+                <ResumeButton variant="header" />
                 <div className="flex items-center gap-2">
                     <ThemeToggle />
 
