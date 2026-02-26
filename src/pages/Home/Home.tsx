@@ -24,7 +24,7 @@ export const Home: React.FC = () => {
 
     const experienceNodes = useMemo(() => (
         experience.map((it: ExperienceItem) => (
-            <article key={`${it.company}-${it.start}`} className="mb-4 border rounded p-4 bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition cursor-pointer transform hover:-translate-y-1">
+            <article key={`${it.company}-${it.start}`} className="mb-4 border border-gray-200 dark:border-slate-700 rounded p-4 bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition cursor-pointer transform hover:-translate-y-1">
                 <div className="flex gap-2">
                     <img src={it.companyLogo} alt={it.company} className="w-6 h-6 rounded-full" />
                     <h4 className="font-semibold">{it.company}</h4>
@@ -51,7 +51,7 @@ export const Home: React.FC = () => {
             <Header />
 
             <Section>
-                <Container id="hero" className="flex items-center gap-6 border-b py-4">
+                <Container id="hero" className="flex items-center gap-6 border-b border-gray-200 dark:border-slate-700 py-4">
                     <div className="w-40 h-40">
                         <img src={photo} loading="lazy" alt="Photo" className="w-40 h-40 object-cover rounded-full" />
                     </div>
@@ -69,7 +69,7 @@ export const Home: React.FC = () => {
                     </div>
                 </Container>
 
-                <Container id="projects" className="mt-4 py-4 border-b">
+                <Container id="projects" className="mt-4 py-4 border-b border-gray-200 dark:border-slate-700">
                     <h2 className="text-2xl font-semibold">Featured Projects</h2>
                     <div className="mt-4">
                         <Suspense fallback={<div className="h-48 bg-gray-50 dark:bg-slate-800 rounded" />}>
@@ -78,7 +78,7 @@ export const Home: React.FC = () => {
                     </div>
                 </Container>
 
-                <Container id="experience" className="mt-4 py-4 border-b">
+                <Container id="experience" className="mt-4 py-4 border-b border-gray-200 dark:border-slate-700">
                     <h2 className="text-2xl font-semibold">Experience</h2>
                     <div className="mt-4">{experienceNodes}</div>
                 </Container>
