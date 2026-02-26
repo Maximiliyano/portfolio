@@ -133,6 +133,7 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect }) => {
                     ref={trackRef}
                     className="flex items-stretch"
                     style={{
+                        gap: `${gap}px`,
                         transform: `translateX(${trackTranslate}px)`,
                         transition: 'transform 600ms cubic-bezier(.22,.9,.32,1)'
                     }}
@@ -140,7 +141,7 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect }) => {
                     {projects.map((p, i) => (
                         <div
                             key={p.id}
-                            style={{ width: `${slideWidth}px`, flex: '0 0 auto', paddingRight: `${gap}px` }}
+                            style={{ width: `${slideWidth}px`, flex: '0 0 auto' }}
                             className={`transition-transform duration-500 ${i === index ? 'scale-100 blur-0 opacity-100' : 'scale-95 blur-sm opacity-60'}`}>
                             <ProjectCard project={p} onClick={onSelect} />
                         </div>
