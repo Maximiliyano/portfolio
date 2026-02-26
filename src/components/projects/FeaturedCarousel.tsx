@@ -142,7 +142,7 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect }) => {
                         <div
                             key={p.id}
                             style={{ width: `${slideWidth}px`, flex: '0 0 auto' }}
-                            className={`transition-transform duration-500 ${i === index ? 'scale-100 blur-0 opacity-100' : 'scale-95 blur-sm opacity-60'}`}>
+                            className={`transition-all duration-500 ${i === index ? 'scale-100 opacity-100' : 'scale-[0.96] opacity-50'}`}>
                             <ProjectCard project={p} onClick={onSelect} />
                         </div>
                     ))}
@@ -150,33 +150,34 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect }) => {
             </div>
 
             {projects.length > 1 && (
-                <>
+                <div className="mt-4 flex items-center justify-center gap-3">
                     <button
                         aria-label="Previous"
                         onClick={prev}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white dark:bg-slate-800 hover:bg-white dark:hover:bg-slate-700 text-lg rounded-full w-10 h-10 flex items-center justify-center shadow-lg"
+                        className="w-8 h-8 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700 shadow border border-gray-200 dark:border-slate-600 transition-colors"
                     >
-                        <FaChevronLeft />
-                    </button>
-                    <button
-                        aria-label="Next"
-                        onClick={next}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white dark:bg-slate-800 hover:bg-white dark:hover:bg-slate-700 text-lg rounded-full w-10 h-10 flex items-center justify-center shadow-lg"
-                    >
-                        <FaChevronRight />
+                        <FaChevronLeft size={12} />
                     </button>
 
-                    <div className="mt-4 flex justify-center gap-2">
+                    <div className="flex gap-2">
                         {projects.map((p, i) => (
                             <button
                                 key={p.id}
                                 onClick={() => setIndex(i)}
                                 aria-label={`Go to slide ${i + 1}`}
-                                className={`cursor-pointer w-2 h-2 rounded-full transition-all ${i === index ? 'bg-teal-600 w-2 h-2' : 'bg-gray-300'}`}
+                                className={`rounded-full transition-all duration-300 ${i === index ? 'bg-teal-500 w-5 h-2' : 'bg-gray-300 dark:bg-slate-600 w-2 h-2'}`}
                             />
                         ))}
                     </div>
-                </>
+
+                    <button
+                        aria-label="Next"
+                        onClick={next}
+                        className="w-8 h-8 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700 shadow border border-gray-200 dark:border-slate-600 transition-colors"
+                    >
+                        <FaChevronRight size={12} />
+                    </button>
+                </div>
             )}
         </div>
     );
