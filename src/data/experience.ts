@@ -30,7 +30,7 @@ export const experience: ExperienceItem[] = [
         bullets: [
             'Developed multiple internal and client-facing systems as full-stack .NET developer',
             'Improved performance and implemented caching strategies',
-            'Contributed to Azure deployment pipelines and infra automation'
+            'Contributed to Azure deployment pipelines and infrastructure automation'
         ],
         tech: ['.NET Core', 'Azure', 'React']
     },
