@@ -27,7 +27,7 @@ export const ExperienceSection = () => {
                 <ul className="space-y-1">
                     {it.bullets.map((b, i) => (
                         <li key={i} className="flex gap-2 text-sm text-gray-600 dark:text-gray-300">
-                            <span className="text-indigo-400 flex-shrink-0 mt-0.5">›</span>
+                            <span className="text-teal-400 shrink-0 mt-0.5">›</span>
                             {b}
                         </li>
                     ))}

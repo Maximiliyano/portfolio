@@ -126,7 +126,7 @@ const ProjectDetail: React.FC<Props> = ({ project, onClose }) => {
                                         <button
                                             key={src}
                                             onClick={() => setImageIndex(i)}
-                                            className={`w-16 h-10 flex-shrink-0 rounded-lg overflow-hidden transition-all ${i === imageIndex ? 'ring-2 ring-indigo-500' : 'ring-1 ring-gray-200 dark:ring-slate-700 opacity-60 hover:opacity-100'}`}
+                                            className={`w-16 h-10 flex-shrink-0 rounded-lg overflow-hidden transition-all ${i === imageIndex ? 'ring-2 ring-teal-500' : 'ring-1 ring-gray-200 dark:ring-slate-700 opacity-60 hover:opacity-100'}`}
                                         >
                                             <img src={src} alt={`thumb ${i + 1}`} className="w-full h-full object-cover" />
                                         </button>
@@ -138,7 +138,7 @@ const ProjectDetail: React.FC<Props> = ({ project, onClose }) => {
 
                     {/* Role badge */}
                     {project.role && (
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300">
                             {project.role}
                         </span>
                     )}
@@ -155,7 +155,7 @@ const ProjectDetail: React.FC<Props> = ({ project, onClose }) => {
                         <ul className="space-y-1.5">
                             {project.responsibilities.map((r, i) => (
                                 <li key={i} className="flex gap-2 text-sm text-gray-700 dark:text-gray-200">
-                                    <span className="text-indigo-400 mt-0.5 flex-shrink-0">›</span>
+                                    <span className="text-teal-400 mt-0.5 flex-shrink-0">›</span>
                                     {r}
                                 </li>
                             ))}

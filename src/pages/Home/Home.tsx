@@ -7,6 +7,7 @@ import { HeroSection } from '../../components/sections/HeroSection';
 import { ProjectsSection } from '../../components/sections/ProjectsSection';
 import { ExperienceSection } from '../../components/sections/ExperienceSection';
 import { SkillsSection } from '../../components/sections/SkillsSection';
+import { CtaSection } from '../../components/sections/CtaSection';
 
 const ProjectDetail = React.lazy(() => import('../../components/projects/ProjectDetail'));
 
@@ -23,6 +24,7 @@ export const Home: React.FC = () => {
                 <ProjectsSection onSelect={handleSelect} />
                 <ExperienceSection />
                 <SkillsSection />
+                <CtaSection />
             </Section>
             <Footer />
             <Suspense fallback={null}>

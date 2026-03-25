@@ -13,8 +13,7 @@ const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
             role={onClick ? 'button' : undefined}
             tabIndex={onClick ? 0 : undefined}
         >
-            {/* Thumbnail */}
-            <div className="relative w-full h-44 bg-gray-100 dark:bg-slate-700 overflow-hidden flex-shrink-0">
+            <div className="relative w-full h-44 bg-gray-100 dark:bg-slate-700 overflow-hidden shrink-0">
                 <img src={thumb} alt={`${project.title} thumbnail`} className="w-full h-full object-cover" />
                 <div className="absolute left-3 top-3 flex items-center gap-2 bg-white/85 dark:bg-slate-900/80 backdrop-blur-sm rounded-full px-3 py-1">
                     <img src={project.companyLogo} alt={project.company} className="w-5 h-5 rounded-full" />
@@ -27,7 +26,7 @@ const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
 
             <div className="flex flex-col flex-1 p-4 gap-2">
                 {project.role && (
-                    <span className="self-start text-xs font-medium px-2.5 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300">
+                    <span className="self-start text-xs font-medium px-2.5 py-0.5 rounded-full bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300">
                         {project.role}
                     </span>
                 )}

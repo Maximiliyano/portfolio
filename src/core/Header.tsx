@@ -68,16 +68,16 @@ export const Header = () => {
                     className="md:hidden border-t"
                     style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}
                 >
-                    <nav className="flex justify-around py-2 max-w-6xl mx-auto px-4">
+                    <nav className="flex flex-col gap-1 py-2 max-w-6xl mx-auto px-4">
                         {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
                             <a
                                 key={href}
                                 href={href}
-                                title={label}
                                 onClick={() => setMenuOpen(false)}
-                                className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-teal-500 transition-colors"
+                                className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-teal-500 transition-colors text-sm font-medium"
                             >
-                                <Icon size={22} />
+                                <Icon size={18} />
+                                {label}
                             </a>
                         ))}
                     </nav>
