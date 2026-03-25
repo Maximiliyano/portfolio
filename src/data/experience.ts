@@ -17,8 +17,11 @@ export const experience: ExperienceItem[] = [
         start: 'Feb 2026',
         end: 'Present',
         location: 'Remote',
-        bullets: [],
-        tech: ['.NET Core', 'Azure', 'Angular']
+        bullets: [
+            'Designed and implemented RESTful APIs for frontend and external integrations;',
+            'Wrote unit tests and participate in code reviews.'
+        ],
+        tech: ['.NET Core', 'Azure Cloud Services', 'SQL Server', 'Dapper', 'Angular']
     },
     {
         company: 'DataArt Solutions, Inc.',
@@ -32,7 +35,7 @@ export const experience: ExperienceItem[] = [
             'Improved performance and implemented caching strategies',
             'Contributed to Azure deployment pipelines and infrastructure automation'
         ],
-        tech: ['.NET Core', 'Azure', 'React']
+        tech: ['.NET Core 6-9', '.NET Framework 4.7', 'Angular', 'React', 'knockout.js', 'Azure', 'mediaMTX', 'EventStore', 'RavenDB', 'SQL Server']
     },
     {
         company: 'Vector Software, Ltd.',

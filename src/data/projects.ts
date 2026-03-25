@@ -13,6 +13,21 @@ export type Project = {
 
 export const projects: Project[] = [
     {
+        id: 'transport-and-schedule-system',
+        images: ['https://www.visitoslo.com/contentassets/1f51fc42aed2470295163ec421a54be3/ruter_buss-og-trikk_1.jpg'],
+        title: 'Public Transport and Schedule System',
+        period: 'Feb 2026 - Present',
+        company: 'Coherent Solutions',
+        companyLogo: 'https://www.coherentsolutions.com/hubfs/favicon-96x96.png',
+        summary: "The project focuses on developing and modernizing a platform, replacing an existing on-premise solution with a cloud-based architecture. The system supports vehicle and operator scheduling, route planning, timetables, blocking, runcutting, and rostering.",
+        role: "Full-Stack .NET Developer",
+        tech: ['.NET Core', 'Azure Cloud Services', 'SQL Server', 'Dapper', 'Angular'],
+        responsibilities: [
+            'Designed and implemented RESTful APIs for frontend and external integrations;',
+            'Wrote unit tests and participate in code reviews.'
+        ]
+    },
+    {
         id: 'performance-review',
         images: ['https://plprojects.co.uk/wp-content/uploads/2025/04/PL-Projects-Why-You-Should-Be-Conducting-Post-Project-Reviews-1024x538.jpg'],
         title: 'Performance Review Website',
