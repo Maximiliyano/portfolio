@@ -1,50 +1,50 @@
-export type Skill = { name: string; level?: number };
+export type Skill = { name: string; years: number };
 export type SkillGroup = { group: string; items: Skill[] };
 
 export const skills: SkillGroup[] = [
     {
         group: 'Languages',
         items: [
-            { name: 'C#', level: 90 },
-            { name: 'JavaScript', level: 80 },
-            { name: 'TypeScript', level: 75 },
-            { name: 'SQL', level: 80 },
-            { name: 'HTML5', level: 85 },
-            { name: 'CSS3', level: 75 }
+            { name: 'C#', years: 4 },
+            { name: 'JavaScript', years: 3 },
+            { name: 'TypeScript', years: 3 },
+            { name: 'SQL', years: 4 },
+            { name: 'HTML5', years: 4 },
+            { name: 'CSS3', years: 3 }
         ]
     },
     {
         group: 'Backend / Architecture',
         items: [
-            { name: '.NET Core', level: 90 },
-            { name: 'ASP.NET Web API', level: 85 },
-            { name: 'CQRS', level: 70 },
-            { name: 'EventStore', level: 65 }
+            { name: '.NET Core', years: 4 },
+            { name: 'ASP.NET Web API', years: 4 },
+            { name: 'CQRS', years: 2 },
+            { name: 'EventStore', years: 1 }
         ]
     },
     {
         group: 'Frontend',
         items: [
-            { name: 'Angular', level: 70 },
-            { name: 'React', level: 75 },
-            { name: 'Tailwind CSS', level: 70 }
+            { name: 'Angular', years: 2 },
+            { name: 'React', years: 2 },
+            { name: 'Tailwind CSS', years: 2 }
         ]
     },
     {
         group: 'Databases',
         items: [
-            { name: 'MS SQL Server', level: 85 },
-            { name: 'PostgreSQL', level: 75 },
-            { name: 'MongoDB', level: 65 }
+            { name: 'MS SQL Server', years: 4 },
+            { name: 'PostgreSQL', years: 3 },
+            { name: 'MongoDB', years: 2 }
         ]
     },
     {
         group: 'Tools & Testing',
         items: [
-            { name: 'EF Core', level: 80 },
-            { name: 'Dapper', level: 70 },
-            { name: 'xUnit', level: 75 },
-            { name: 'NUnit', level: 70 }
+            { name: 'EF Core', years: 4 },
+            { name: 'Dapper', years: 2 },
+            { name: 'xUnit', years: 3 },
+            { name: 'NUnit', years: 2 }
         ]
     }
 ];

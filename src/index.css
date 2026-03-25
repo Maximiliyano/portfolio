@@ -18,6 +18,11 @@
     --border: #1e293b;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+}
+
 html,
 body {
     background-color: var(--bg);

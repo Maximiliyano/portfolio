@@ -1,18 +1,14 @@
 import React from 'react';
-import { useInView } from '../../hooks/useInView';
 
-type Props = { name: string };
+type Props = { name: string; years: number };
 
-export const SkillBar: React.FC<Props> = ({ name }) => {
-    const { ref } = useInView();
-
-    return (
-        <div ref={ref as any} className="mb-3">
-            <div className="flex justify-between items-center text-sm mb-1 border rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition px-2 py-1">
-                <span className="font-medium">{name}</span>
-            </div>
-        </div>
-    );
-};
+export const SkillBar: React.FC<Props> = ({ name, years }) => (
+    <div className="flex items-center justify-between py-1">
+        <span className="text-sm font-medium text-gray-700 dark:text-gray-200">{name}</span>
+        <span className="text-xs font-medium text-gray-400 dark:text-gray-500 tabular-nums">
+            {years} {years === 1 ? 'yr' : 'yrs'}
+        </span>
+    </div>
+);
 
 export default SkillBar;

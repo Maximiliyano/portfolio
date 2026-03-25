@@ -5,6 +5,7 @@ import { useTheme } from '../context/ThemeContext';
 import { FiCode, FiBriefcase, FiZap, FiMenu, FiX } from 'react-icons/fi';
 import logoDark from '../assets/favicon.ico';
 import logoLight from '../assets/favicon-white.ico';
+import site from '../data/site';
 
 const NAV_ITEMS = [
     { href: '#projects', icon: FiCode, label: 'Projects' },
@@ -34,9 +35,12 @@ export const Header = () => {
             style={{ backgroundColor: 'var(--surface)', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}
         >
             <div className="flex justify-between items-center w-full max-w-6xl mx-auto px-4 py-3">
-                <a href="/" aria-label="Portfolio Logo" className="flex items-center gap-2">
+                <a href="/" aria-label="Portfolio Logo" className="relative flex items-center gap-2">
                     <img src={logo} alt="Logo" className="w-6 h-6" />
                     <span className="font-semibold">Portfolio</span>
+                    {site.openToOpportunities && (
+                        <span className="absolute -top-1 -right-3 w-2 h-2 rounded-full bg-emerald-500 animate-pulse" title="Open to opportunities" />
+                    )}
                 </a>
 
                 <nav className="hidden md:flex items-center gap-8">

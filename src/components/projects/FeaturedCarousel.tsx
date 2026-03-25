@@ -131,11 +131,12 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect }) => {
             <div className="overflow-visible" style={{ padding: `0 ${peek}px`, boxSizing: 'border-box' }}>
                 <div
                     ref={trackRef}
-                    className="flex items-stretch"
+                    className="flex items-stretch select-none"
                     style={{
                         gap: `${gap}px`,
                         transform: `translateX(${trackTranslate}px)`,
-                        transition: 'transform 600ms cubic-bezier(.22,.9,.32,1)'
+                        transition: 'transform 600ms cubic-bezier(.22,.9,.32,1)',
+                        touchAction: 'pan-y'
                     }}
                 >
                     {projects.map((p, i) => (
