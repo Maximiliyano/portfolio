@@ -18,8 +18,8 @@ export const HeroSection = () => (
             <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-50">{site.name}</h1>
             <div className="mt-1.5 mb-3">
                 <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-medium rounded-full ${site.openToOpportunities ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300' : 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300'}`}>
-                    <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${site.openToOpportunities ? 'bg-emerald-500' : 'bg-red-500'}`} />
-                    {site.openToOpportunities ? 'Open to opportunities' : 'Not in active search'}
+                    <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${site.openToOpportunities ? 'bg-emerald-500' : 'bg-red-500'}`} />
+                    {site.openToOpportunities ? 'Open to opportunities' : 'Employed. Not looking for new opportunities'}
                 </span>
             </div>
             <p className="text-base text-gray-600 dark:text-gray-400">{site.title} · {site.location}</p>

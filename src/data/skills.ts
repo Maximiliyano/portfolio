@@ -42,6 +42,7 @@ export const skills: SkillGroup[] = [
         group: 'Tools & Testing',
         items: [
             { name: 'EF Core', years: 4 },
+            { name: 'NHibernate', years: 2 },
             { name: 'Dapper', years: 2 },
             { name: 'xUnit', years: 3 },
             { name: 'NUnit', years: 2 }
