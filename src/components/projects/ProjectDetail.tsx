@@ -1,10 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiX, FiChevronLeft, FiChevronRight, FiUsers } from 'react-icons/fi';
 import type { Project } from '../../data/projects';
+import { domainById } from '../../data/domains';
+import { countryName } from '../../lib/countryFlag';
+import { Flag } from '../ui/Flag';
+import { formatPeriod } from '../../lib/dateMath';
 
-type Props = { project: Project | null; onClose: () => void };
+type Siblings = { prev: Project | null; next: Project | null };
 
-const ProjectDetail: React.FC<Props> = ({ project, onClose }) => {
+type Props = {
+    project: Project | null;
+    onClose: () => void;
+    onNavigate?: (delta: 1 | -1) => void;
+    siblings?: Siblings;
+};
+
+const ProjectDetail: React.FC<Props> = ({ project, onClose, onNavigate, siblings }) => {
     const dialogRef = useRef<HTMLDivElement | null>(null);
     const previouslyFocused = useRef<HTMLElement | null>(null);
     const [imageIndex, setImageIndex] = useState(0);
@@ -12,6 +23,10 @@ const ProjectDetail: React.FC<Props> = ({ project, onClose }) => {
     const imgs = project?.images ?? [];
     const prevImage = () => setImageIndex(i => (i - 1 + imgs.length) % imgs.length);
     const nextImage = () => setImageIndex(i => (i + 1) % imgs.length);
+
+    const canNavigate = Boolean(onNavigate && siblings && (siblings.prev || siblings.next));
+    const goPrevProject = () => onNavigate?.(-1);
+    const goNextProject = () => onNavigate?.(1);
 
     useEffect(() => {
         if (!project) return;
@@ -21,9 +36,28 @@ const ProjectDetail: React.FC<Props> = ({ project, onClose }) => {
         focusable?.[0]?.focus();
 
         const onKey = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') onClose();
-            if (e.key === 'ArrowRight') nextImage();
-            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'Escape') {
+                onClose();
+                return;
+            }
+            if (e.key === 'ArrowRight') {
+                if (e.shiftKey && canNavigate) {
+                    e.preventDefault();
+                    goNextProject();
+                } else {
+                    nextImage();
+                }
+                return;
+            }
+            if (e.key === 'ArrowLeft') {
+                if (e.shiftKey && canNavigate) {
+                    e.preventDefault();
+                    goPrevProject();
+                } else {
+                    prevImage();
+                }
+                return;
+            }
             if (e.key === 'Tab' && dialog) {
                 const nodes = Array.from(
                     dialog.querySelectorAll<HTMLElement>('a,button,input,textarea,[tabindex]')
@@ -41,11 +75,14 @@ const ProjectDetail: React.FC<Props> = ({ project, onClose }) => {
             window.removeEventListener('keydown', onKey);
             previouslyFocused.current?.focus();
         };
-    }, [project, onClose]);
+    }, [project, onClose, canNavigate]);
 
-    useEffect(() => setImageIndex(0), [project]);
+    useEffect(() => setImageIndex(0), [project?.id]);
 
     if (!project) return null;
+
+    const period = formatPeriod(project.start, project.end);
+    const projectDomains = project.domains.map(domainById).filter((d): d is NonNullable<typeof d> => Boolean(d));
 
     return (
         <div
@@ -59,6 +96,30 @@ const ProjectDetail: React.FC<Props> = ({ project, onClose }) => {
                 className="absolute inset-0 bg-black/50 backdrop-blur-sm"
                 onClick={onClose}
             />
+
+            {/* Floating prev project (desktop) */}
+            {canNavigate && siblings?.prev && (
+                <button
+                    type="button"
+                    onClick={goPrevProject}
+                    aria-label={`Previous project: ${siblings.prev.title}`}
+                    title={`Previous: ${siblings.prev.title} (Shift + ←)`}
+                    className="hidden sm:flex absolute left-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-700 shadow-lg text-gray-700 dark:text-gray-200 transition-colors"
+                >
+                    <FiChevronLeft size={22} />
+                </button>
+            )}
+            {canNavigate && siblings?.next && (
+                <button
+                    type="button"
+                    onClick={goNextProject}
+                    aria-label={`Next project: ${siblings.next.title}`}
+                    title={`Next: ${siblings.next.title} (Shift + →)`}
+                    className="hidden sm:flex absolute right-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-700 shadow-lg text-gray-700 dark:text-gray-200 transition-colors"
+                >
+                    <FiChevronRight size={22} />
+                </button>
+            )}
 
             {/* Sheet / Modal */}
             <div
@@ -76,7 +137,30 @@ const ProjectDetail: React.FC<Props> = ({ project, onClose }) => {
                         <img src={project.companyLogo} alt={project.company} className="w-8 h-8 rounded-full flex-shrink-0" />
                         <div className="min-w-0">
                             <h3 id="project-detail-title" className="font-bold text-gray-900 dark:text-gray-50 truncate leading-tight">{project.title}</h3>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">{project.company} · {project.period}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 truncate flex items-center gap-1.5">
+                                <span>{project.company} · {period}</span>
+                                {project.teamSize !== undefined && (
+                                    <>
+                                        <span aria-hidden="true">·</span>
+                                        <span className="inline-flex items-center gap-1" title={`Team size: ${project.teamSize}`}>
+                                            <FiUsers size={11} aria-hidden="true" />
+                                            <span>{project.teamSize}</span>
+                                        </span>
+                                    </>
+                                )}
+                            </p>
+                            {(project.country || project.clientType) && (
+                                <p className="text-xs text-gray-600 dark:text-gray-300 truncate flex items-center gap-1.5 mt-0.5">
+                                    {project.country && (
+                                        <span className="inline-flex items-center gap-1.5">
+                                            <Flag code={project.country} size="sm" />
+                                            <span>{countryName(project.country)}</span>
+                                        </span>
+                                    )}
+                                    {project.country && project.clientType && <span className="text-gray-400">·</span>}
+                                    {project.clientType && <span>{project.clientType}</span>}
+                                </p>
+                            )}
                         </div>
                     </div>
                     <button
@@ -87,6 +171,33 @@ const ProjectDetail: React.FC<Props> = ({ project, onClose }) => {
                         <FiX size={20} />
                     </button>
                 </div>
+
+                {/* Mobile prev/next project row */}
+                {canNavigate && (
+                    <div className="sm:hidden flex items-stretch border-b border-gray-100 dark:border-slate-700 flex-shrink-0">
+                        <button
+                            type="button"
+                            onClick={goPrevProject}
+                            disabled={!siblings?.prev}
+                            aria-label={siblings?.prev ? `Previous project: ${siblings.prev.title}` : 'No previous project'}
+                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 text-xs text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800 disabled:opacity-40 disabled:hover:bg-transparent transition-colors"
+                        >
+                            <FiChevronLeft size={14} />
+                            <span className="truncate">{siblings?.prev ? siblings.prev.title : 'Previous'}</span>
+                        </button>
+                        <span className="w-px bg-gray-100 dark:bg-slate-700" />
+                        <button
+                            type="button"
+                            onClick={goNextProject}
+                            disabled={!siblings?.next}
+                            aria-label={siblings?.next ? `Next project: ${siblings.next.title}` : 'No next project'}
+                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 text-xs text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800 disabled:opacity-40 disabled:hover:bg-transparent transition-colors"
+                        >
+                            <span className="truncate">{siblings?.next ? siblings.next.title : 'Next'}</span>
+                            <FiChevronRight size={14} />
+                        </button>
+                    </div>
+                )}
 
                 {/* Scrollable body */}
                 <div className="overflow-y-auto flex-1 px-5 py-4 space-y-5">
@@ -136,18 +247,33 @@ const ProjectDetail: React.FC<Props> = ({ project, onClose }) => {
                         </div>
                     )}
 
-                    {/* Role badge */}
-                    {project.role && (
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300">
-                            {project.role}
-                        </span>
-                    )}
+                    <div className="flex flex-wrap gap-2">
+                        {project.role && (
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300">
+                                {project.role}
+                            </span>
+                        )}
+                    </div>
 
                     {/* Overview */}
                     <section>
                         <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500 mb-1.5">Overview</h4>
                         <p className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">{project.summary}</p>
                     </section>
+
+                    {/* Domains */}
+                    {projectDomains.length > 0 && (
+                        <section>
+                            <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500 mb-1.5">Domains</h4>
+                            <div className="flex flex-wrap gap-2">
+                                {projectDomains.map(d => (
+                                    <span key={d.id} className="px-2.5 py-1 text-xs rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300" title={d.description}>
+                                        {d.label}
+                                    </span>
+                                ))}
+                            </div>
+                        </section>
+                    )}
 
                     {/* Responsibilities */}
                     <section>
@@ -167,7 +293,7 @@ const ProjectDetail: React.FC<Props> = ({ project, onClose }) => {
                         <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500 mb-1.5">Technologies</h4>
                         <div className="flex flex-wrap gap-2">
                             {project.tech.map(t => (
-                                <span key={t} className="px-2.5 py-1 text-xs rounded-lg border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-slate-800">
+                                <span key={t} className="px-2.5 py-1 text-xs rounded-lg border border-cyan-200 dark:border-cyan-600 text-cyan-700 dark:text-cyan-300 bg-cyan-50 dark:bg-cyan-800">
                                     {t}
                                 </span>
                             ))}

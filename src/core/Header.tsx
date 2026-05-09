@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import ResumeButton from '../components/ui/ResumeButton';
 import { ThemeToggle } from '../components/ui/ThemeToggle';
 import { useTheme } from '../context/ThemeContext';
-import { FiCode, FiBriefcase, FiZap, FiMenu, FiX } from 'react-icons/fi';
+import { FiCode, FiBriefcase, FiZap, FiMenu, FiX, FiTag } from 'react-icons/fi';
 import logoDark from '../assets/favicon.ico';
 import logoLight from '../assets/favicon-white.ico';
 import site from '../data/site';
 
 const NAV_ITEMS = [
     { href: '#projects', icon: FiCode, label: 'Projects' },
+    { href: '#domains', icon: FiTag, label: 'Domains' },
     { href: '#experience', icon: FiBriefcase, label: 'Experience' },
     { href: '#skills', icon: FiZap, label: 'Skills' },
 ];
