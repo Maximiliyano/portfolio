@@ -3,11 +3,12 @@ import type { Project } from '../../data/projects';
 import ProjectCard from './ProjectCard';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-type Props = { projects: Project[]; onSelect?: (p: Project) => void };
+type Props = { projects: Project[]; onSelect?: (p: Project) => void; paused?: boolean };
 
-export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect }) => {
+export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect, paused = false }) => {
     const [index, setIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const [dragging, setDragging] = useState(false);
     const containerRef = useRef<HTMLDivElement | null>(null);
     const trackRef = useRef<HTMLDivElement | null>(null);
     const draggingRef = useRef(false);
@@ -28,10 +29,14 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect }) => {
 
     useEffect(() => {
         if (!projects || projects.length <= 1) return;
-        if (isPaused) return;
+        if (isPaused || paused) return;
         const t = setInterval(() => setIndex((i) => (i + 1) % projects.length), 4500);
         return () => clearInterval(t);
-    }, [projects.length, isPaused]);
+    }, [projects.length, isPaused, paused]);
+
+    useEffect(() => {
+        if (index >= projects.length) setIndex(0);
+    }, [projects.length, index]);
 
     useEffect(() => {
         const el = containerRef.current;
@@ -62,6 +67,7 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect }) => {
 
         const onPointerDown = (e: PointerEvent) => {
             draggingRef.current = true;
+            setDragging(true);
             startXRef.current = e.clientX;
             deltaXRef.current = 0;
             lastXRef.current = e.clientX;
@@ -69,7 +75,7 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect }) => {
             setIsPaused(true);
             try {
                 (e.target as Element).setPointerCapture(e.pointerId);
-            } catch { }
+            } catch { /* ignore */ }
         };
 
         const onPointerMove = (e: PointerEvent) => {
@@ -77,7 +83,6 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect }) => {
             deltaXRef.current = e.clientX - startXRef.current;
             const translate = -index * baseOffset + deltaXRef.current + centerOffset;
             track.style.transform = `translateX(${translate}px)`;
-            track.style.transition = 'none';
 
             lastXRef.current = e.clientX;
             lastTRef.current = e.timeStamp;
@@ -86,6 +91,7 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect }) => {
         const onPointerUp = (e?: PointerEvent) => {
             if (!draggingRef.current) return;
             draggingRef.current = false;
+            setDragging(false);
             setIsPaused(false);
             const dx = deltaXRef.current;
             const threshold = Math.max(60, containerWidth * 0.08);
@@ -135,15 +141,16 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect }) => {
                     style={{
                         gap: `${gap}px`,
                         transform: `translateX(${trackTranslate}px)`,
-                        transition: 'transform 600ms cubic-bezier(.22,.9,.32,1)',
-                        touchAction: 'pan-y'
+                        transition: dragging ? 'none' : 'transform 600ms cubic-bezier(.22,.9,.32,1)',
+                        touchAction: 'pan-y',
+                        willChange: 'transform'
                     }}
                 >
                     {projects.map((p, i) => (
                         <div
                             key={p.id}
                             style={{ width: `${slideWidth}px`, flex: '0 0 auto' }}
-                            className={`transition-all duration-500 ${i === index ? 'scale-100 opacity-100' : 'scale-[0.96] opacity-50'}`}>
+                            className={`transition-[transform,opacity] duration-500 ${i === index ? 'scale-100 opacity-100' : 'scale-[0.96] opacity-50'}`}>
                             <ProjectCard project={p} onClick={onSelect} />
                         </div>
                     ))}
