@@ -13,11 +13,26 @@ export type ExperienceItem = {
 
 export const experience: ExperienceItem[] = [
     {
+        company: 'EPAM Systems, Inc.',
+        companyLogo: 'https://www.epam.com/etc/designs/epam-core/favicon/favicon-32x32.png',
+        role: 'Software Engineer',
+        start: 'Apr 2026',
+        end: 'Present',
+        location: 'Hybrid',
+        city: 'Lviv',
+        country: 'UA',
+        bullets: [
+            'Medical software development for a US-based client in the healthcare industry;',
+            'Migration of legacy database MSSQL to PostgreSQL with backward compatibility.'
+        ],
+        tech: ['.NET Core', 'Azure Cloud Services', 'SQL Server', 'AWS', 'PostgreSQL']
+    },
+    {
         company: 'Coherent Solutions, Inc.',
         companyLogo: 'https://www.coherentsolutions.com/hubfs/favicon-96x96.png',
         role: 'Software Engineer',
         start: 'Feb 2026',
-        end: 'Present',
+        end: 'Apr 2026',
         location: 'Remote',
         city: 'Lviv',
         country: 'UA',

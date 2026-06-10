@@ -24,7 +24,7 @@ export const projects: Project[] = [
         images: ['https://www.visitoslo.com/contentassets/1f51fc42aed2470295163ec421a54be3/ruter_buss-og-trikk_1.jpg'],
         title: 'Public Transport and Schedule System',
         start: 'Feb 2026',
-        end: 'Present',
+        end: 'Apr 2026',
         company: 'Coherent Solutions',
         companyLogo: 'https://www.coherentsolutions.com/hubfs/favicon-96x96.png',
         country: 'CA',
