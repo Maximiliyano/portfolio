@@ -30,6 +30,7 @@ export const projects: Project[] = [
         country: 'NL',
         clientType: 'Medical Device Manufacturer',
         domains: ['healthcare'],
+        teamSize: 10,
         summary: 'The project was about patient monitoring platform and associated applications. Installed in hospitals and supporting beds to ensure patient health safety with on-premise infrastructure using AWS Cloud, Postgres and SQL Server with backward compatibility.',
         role: 'Full-Stack .NET Engineer',
         tech: ['.NET Framework 4.8', 'WCF', 'Amazon Web Services', 'EC2', 'Postgres', 'SQL Server', 'Azure DevOps'],
