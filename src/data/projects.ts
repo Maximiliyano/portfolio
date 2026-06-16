@@ -20,6 +20,27 @@ export type Project = {
 
 export const projects: Project[] = [
     {
+        id: 'medical-device-management-system',
+        images: ['https://www.advamed.org/wp-content/uploads/2021/05/medical-device-safety-quality.jpg'],
+        title: 'Medical Device Management System',
+        start: 'Apr 2026',
+        end: 'Present',
+        company: 'EPAM',
+        companyLogo: 'https://www.epam.com/etc/designs/epam-core/favicon/favicon-32x32.png',
+        country: 'NL',
+        clientType: 'Medical Device Manufacturer',
+        domains: ['healthcare'],
+        summary: 'The project was about patient monitoring platform and associated applications. Installed in hospitals and supporting beds to ensure patient health safety with on-premise infrastructure using AWS Cloud, Postgres and SQL Server with backward compatibility.',
+        role: 'Full-Stack .NET Engineer',
+        tech: ['.NET Framework 4.8', 'WCF', 'Amazon Web Services', 'EC2', 'Postgres', 'SQL Server', 'Azure DevOps'],
+        responsibilities: [
+            'Performed migration from MSSQL implementation to the PostgreSQL with backward compatibility',
+            'Supported application installation process within integration for infrastructure operations',
+            'Demo sharing of implemented functionality to align on tech requirement and resolve project challenges',
+            'Developed PowerShell and SQL scripts to automate deployement and configuration processes'
+        ]
+    },
+    {
         id: 'transport-and-schedule-system',
         images: ['https://www.visitoslo.com/contentassets/1f51fc42aed2470295163ec421a54be3/ruter_buss-og-trikk_1.jpg'],
         title: 'Public Transport and Schedule System',
@@ -45,15 +66,15 @@ export const projects: Project[] = [
     },
     {
         id: 'ai-agents-platform',
-        images: ['https://techgenies.com/wp-content/uploads/2025/06/ai-human-interaction-modern-workplace-min-scaled.jpg'],
+        images: ['https://www.ovaledge.com/hubfs/Ovaledge%20Banner%20Blog%20-%202026-02-04T174419.165.png'],
         title: 'AI Agents Platform',
         start: 'Sep 2025',
         end: 'Feb 2026',
         company: 'DataArt',
         companyLogo: 'https://www.dataart.com/favicon.ico',
         country: 'US',
-        clientType: 'Investment / Private Equity',
-        domains: ['fintech', 'ai-ml'],
+        clientType: 'Artificial Intelligence',
+        domains: ['ai-ml'],
         teamSize: 6,
         summary: "Developed a scalable AI-driven platform focused on orchestrating intelligent agents to support investment workflows and decision-making processes. The system emphasized modular architecture, high performance, and seamless integration with existing enterprise tools.",
         role: "Full-Stack .NET Engineer",

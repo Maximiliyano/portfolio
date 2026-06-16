@@ -4,7 +4,8 @@ export type DomainId =
     | 'maritime'
     | 'ai-ml'
     | 'security-iot'
-    | 'hr-enterprise';
+    | 'hr-enterprise'
+    | 'healthcare';
 
 export type Domain = {
     id: DomainId;
@@ -50,6 +51,12 @@ export const domains: Domain[] = [
         short: 'HR / Enterprise',
         description: 'Performance reviews, internal platforms',
     },
+    {
+        id: 'healthcare',
+        label: 'MedTech / Healthcare',
+        short: 'Healthcare',
+        description: 'Medical device setup, healthcare data config'
+    }
 ];
 
 export const domainById = (id: DomainId): Domain | undefined =>
