@@ -45,14 +45,14 @@ export const experience: ExperienceItem[] = [
     {
         company: 'DataArt Solutions, Inc.',
         companyLogo: 'https://www.dataart.com/favicon.ico',
-        role: 'Software Developer',
+        role: 'Software Engineer',
         start: 'Feb 2024',
         end: 'Feb 2026',
         location: 'Hybrid',
         city: 'Lviv',
         country: 'UA',
         bullets: [
-            'Developed multiple internal and client-facing systems as full-stack .NET developer',
+            'Developed multiple internal and client-facing systems as full-stack .NET engineer',
             'Improved performance and implemented caching strategies',
             'Contributed to Azure deployment pipelines and infrastructure automation'
         ],
@@ -68,11 +68,12 @@ export const experience: ExperienceItem[] = [
         city: 'Lviv',
         country: 'UA',
         bullets: [
+            'Migration of Framework to Core app with micro-services infrastructure',
             'Built automated test suites (unit, integration, E2E, UI)',
             'Collaborated with client teams and maintained nightly runs',
             'Performed refactoring and debugging of test infrastructure'
         ],
-        tech: ['.NET Core', 'Angular', 'SQL Server', 'Azure', 'NUnit3', 'Selenium' ]
+        tech: ['.NET Framework 4.6', '.NET Core 5', 'Angular', 'SQL Server', 'Azure', 'NUnit3', 'Selenium' ]
     }
 ];
 

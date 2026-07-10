@@ -32,7 +32,7 @@ export const projects: Project[] = [
         domains: ['healthcare'],
         teamSize: 10,
         summary: 'The project was about patient monitoring platform and associated applications. Installed in hospitals and supporting beds to ensure patient health safety with on-premise infrastructure using AWS Cloud, Postgres and SQL Server with backward compatibility.',
-        role: 'Full-Stack .NET Engineer',
+        role: 'Full-Stack Software Engineer',
         tech: ['.NET Framework 4.8', 'WCF', 'Amazon Web Services', 'EC2', 'Postgres', 'SQL Server', 'Azure DevOps', 'Claude', 'Codemie'],
         responsibilities: [
             'Performed migration from MSSQL implementation to the PostgreSQL with backward compatibility',
@@ -54,7 +54,7 @@ export const projects: Project[] = [
         domains: ['transportation', 'ai-ml'],
         teamSize: 8,
         summary: "The project focuses on developing and modernizing a platform, replacing an existing on-premise solution with a cloud-based architecture. The system supports vehicle and operator scheduling, route planning, timetables, blocking, runcutting, and rostering.",
-        role: "Full-Stack .NET Developer",
+        role: "Full-Stack Software Engineer",
         tech: ['.NET Core', 'Azure Cloud Services', 'SQL Server', 'Claude', 'StoredProcedures', 'Triggers', 'Dapper', 'BitBucket', 'SonarQube', 'Angular'],
         responsibilities: [
             'Designed and implemented RESTful APIs for seamless frontend integration and external system communication',
@@ -79,7 +79,7 @@ export const projects: Project[] = [
         domains: ['ai-ml'],
         teamSize: 6,
         summary: "Developed a scalable AI-driven platform focused on orchestrating intelligent agents to support investment workflows and decision-making processes. The system emphasized modular architecture, high performance, and seamless integration with existing enterprise tools.",
-        role: "Full-Stack .NET Engineer",
+        role: "Full-Stack Software Engineer",
         tech: ['.NET Core', '.NET Aspire', 'Microsoft Orleans', 'Semantic Kernel', 'Model Context Protocol (MCP)'],
         responsibilities: [
             'Designed and implemented multi-agent workflows for automated research, analysis, and review processes using LLM-powered agents',
@@ -102,7 +102,7 @@ export const projects: Project[] = [
         teamSize: 5,
         summary:
             'Platform for multi-role feedback tracking integrated with internal investment management systems.',
-        role: 'Full-Stack .NET Developer',
+        role: 'Full-Stack Software Engineer',
         tech: ['.NET Core', 'ASP.NET Web API', 'React', 'Azure', 'Terraform', 'OAuth 2.0'],
         responsibilities: [
             'Built end-to-end review workflow with multi-role access and feedback tracking',
@@ -125,7 +125,7 @@ export const projects: Project[] = [
         teamSize: 7,
         summary:
             'Platform to manage projects, funds and companies with meeting agenda tracking for private equity operations.',
-        role: 'Full-Stack .NET Developer',
+        role: 'Full-Stack Software Engineer',
         tech: ['.NET Framework', 'NServiceBus', 'EventStore', 'RavenDB', 'Knockout.js', 'React'],
         responsibilities: [
             'Optimised deployments and Octopus-based processes',
@@ -148,7 +148,7 @@ export const projects: Project[] = [
         teamSize: 4,
         summary:
             'Offline-capable system for configuring and monitoring network-connected cameras with role-based permissions.',
-        role: '.NET Developer',
+        role: 'Backend Software Engineer',
         tech: ['.NET Core', 'ASP.NET Web API', 'MediaMTX', 'Serilog', 'xUnit', 'React Native'],
         responsibilities: [
             'Implemented secure camera configuration logic and local proxy services',

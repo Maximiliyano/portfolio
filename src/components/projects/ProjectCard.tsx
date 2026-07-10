@@ -25,6 +25,9 @@ const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
                     <div className="text-xs leading-tight">
                         <div className="font-semibold flex items-center gap-2">
                             <span>{project.company}</span>
+                            <div className="flex items-center">
+                                {project.country && <Flag code={project.country} size="sm" />}
+                            </div>
                         </div>
                         <div className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
                             <span>{period}</span>
@@ -39,9 +42,6 @@ const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
                             )}
                         </div>
                     </div>
-                </div>
-                <div className="absolute right-3 top-3 flex items-center gap-2 bg-white/85 dark:bg-slate-900/80 backdrop-blur-sm rounded-full px-3 py-1">
-                    {project.country && <Flag code={project.country} size="sm" />}
                 </div>
             </div>
 
