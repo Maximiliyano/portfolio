@@ -1,3 +1,4 @@
+import { companies, type Company } from './companies';
 import type { DomainId } from './domains';
 
 export type Project = {
@@ -5,8 +6,7 @@ export type Project = {
     title: string;
     start: string;
     end?: string;
-    company: string;
-    companyLogo: string;
+    company: Company;
     country: string;
     clientType: string;
     domains: DomainId[];
@@ -21,12 +21,11 @@ export type Project = {
 export const projects: Project[] = [
     {
         id: 'medical-device-management-system',
-        images: ['https://www.advamed.org/wp-content/uploads/2021/05/medical-device-safety-quality.jpg'],
+        images: ['https://image-hosting-api.fly.dev/api/images/6aba4c01726918a84bdc72ee.jpg'],
         title: 'Medical Device Management System',
         start: 'Apr 2026',
         end: 'Present',
-        company: 'EPAM',
-        companyLogo: 'https://www.epam.com/etc/designs/epam-core/favicon/favicon-32x32.png',
+        company: companies.EPAM,
         country: 'NL',
         clientType: 'Medical Device Manufacturer',
         domains: ['healthcare'],
@@ -43,12 +42,11 @@ export const projects: Project[] = [
     },
     {
         id: 'transport-and-schedule-system',
-        images: ['https://www.visitoslo.com/contentassets/1f51fc42aed2470295163ec421a54be3/ruter_buss-og-trikk_1.jpg'],
+        images: ['https://image-hosting-api.fly.dev/api/images/69fe3624d32fa239a62a5f4b.png'],
         title: 'Public Transport and Schedule System',
         start: 'Feb 2026',
         end: 'Apr 2026',
-        company: 'Coherent Solutions',
-        companyLogo: 'https://www.coherentsolutions.com/hubfs/favicon-96x96.png',
+        company: companies.CoherentSolutions,
         country: 'CA',
         clientType: 'Public Transport Operator',
         domains: ['transportation', 'ai-ml'],
@@ -68,12 +66,11 @@ export const projects: Project[] = [
     },
     {
         id: 'ai-agents-platform',
-        images: ['https://www.ovaledge.com/hubfs/Ovaledge%20Banner%20Blog%20-%202026-02-04T174419.165.png'],
+        images: ['https://image-hosting-api.fly.dev/api/images/6aba4b8b726918a84bdc72ec.jpg'],
         title: 'AI Agents Platform',
         start: 'Sep 2025',
         end: 'Feb 2026',
-        company: 'DataArt',
-        companyLogo: 'https://www.dataart.com/favicon.ico',
+        company: companies.DataArt,
         country: 'US',
         clientType: 'Artificial Intelligence',
         domains: ['ai-ml'],
@@ -90,12 +87,11 @@ export const projects: Project[] = [
     },
     {
         id: 'performance-review',
-        images: ['https://en.neobrain.io/wp-content/uploads/2024/07/62f12fab150fef4f54f1d881_People%20review.webp'],
+        images: ['https://image-hosting-api.fly.dev/api/images/6aba4651890a0c16aff3dc10.png'],
         title: 'Performance Review Website',
         start: 'Dec 2024',
         end: 'Sep 2025',
-        company: 'DataArt',
-        companyLogo: 'https://www.dataart.com/favicon.ico',
+        company: companies.DataArt,
         country: 'UK',
         clientType: 'Investment Management',
         domains: ['hr-enterprise', 'fintech'],
@@ -113,12 +109,11 @@ export const projects: Project[] = [
     },
     {
         id: 'asset-market-management',
-        images: ['https://cdn.sanity.io/images/uqxwe2qj/production/20577ef16f6c2443c2b43c7e36beef98db3e3661-1086x612.png?q=80&auto=format&fit=clip&dpr=2&w=1086'],
+        images: ['https://image-hosting-api.fly.dev/api/images/69fe360cd32fa239a62a5f46.jpg'],
         title: 'Comprehensive Asset Market Management',
         start: 'Sep 2024',
         end: 'Sep 2025',
-        company: 'DataArt',
-        companyLogo: 'https://www.dataart.com/favicon.ico',
+        company: companies.DataArt,
         country: 'UK',
         clientType: 'Private Equity',
         domains: ['fintech'],
@@ -136,12 +131,11 @@ export const projects: Project[] = [
     },
     {
         id: 'video-monitoring',
-        images: ['https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/1272/cached.offlinehbpl.hbpl.co.uk/news/OMP/cctvintheworkplace_tcm27-105318.jpg'],
+        images: ['https://image-hosting-api.fly.dev/api/images/69fe3613d32fa239a62a5f48.jpg'],
         title: 'Video Monitoring System',
         start: 'May 2024',
         end: 'Aug 2024',
-        company: 'DataArt',
-        companyLogo: 'https://www.dataart.com/favicon.ico',
+        company: companies.DataArt,
         country: 'AE',
         clientType: 'Security / Surveillance',
         domains: ['security-iot'],
@@ -159,12 +153,11 @@ export const projects: Project[] = [
     },
     {
         id: 'vessel-traffic-management',
-        images: ['https://www.vissim.no/wp-content/uploads/2023/06/AdobeStock_396145001-scaled.jpeg'],
+        images: ['https://image-hosting-api.fly.dev/api/images/69fe3603d32fa239a62a5f44.jpg'],
         title: 'Vessel Traffic Management System (VISSIM)',
         start: 'Aug 2022',
         end: 'Dec 2022',
-        company: 'Vector Software',
-        companyLogo: 'https://vector-software.com/wp-content/uploads/2023/07/cropped-favicon-32x32.png',
+        company: companies.VectorSoftware,
         country: 'NO',
         clientType: 'Maritime Operations',
         domains: ['maritime'],

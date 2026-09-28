@@ -1,5 +1,4 @@
 import site from '../../data/site';
-import photo from '../../assets/photo.jpg';
 import { Container } from '../layout/Container';
 import { ContactLinks } from '../ui/ContactLinks';
 import ResumeButton from '../ui/ResumeButton';
@@ -8,7 +7,7 @@ export const HeroSection = () => (
     <Container id="hero" className="flex flex-col sm:flex-row items-stretch gap-6 border-b border-gray-200 dark:border-slate-700 py-6">
         <div className="shrink-0 mx-auto sm:mx-0">
             <img
-                src={photo}
+                src={site.avatarUrl}
                 loading="lazy"
                 alt={site.name}
                 className="w-36 sm:w-48 h-full object-cover rounded-xl border border-gray-200 dark:border-slate-600 shadow-md"

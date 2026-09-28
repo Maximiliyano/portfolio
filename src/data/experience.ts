@@ -1,6 +1,7 @@
+import { companies, type Company } from "./companies";
+
 export type ExperienceItem = {
-    company: string;
-    companyLogo?: string;
+    company: Company;
     role: string;
     start: string;
     end?: string;
@@ -13,8 +14,7 @@ export type ExperienceItem = {
 
 export const experience: ExperienceItem[] = [
     {
-        company: 'EPAM Systems, Inc.',
-        companyLogo: 'https://www.epam.com/etc/designs/epam-core/favicon/favicon-32x32.png',
+        company: companies.EPAM,
         role: 'Software Engineer',
         start: 'Apr 2026',
         end: 'Present',
@@ -28,8 +28,7 @@ export const experience: ExperienceItem[] = [
         tech: ['.NET Core', 'Azure Cloud Services', 'SQL Server', 'AWS', 'PostgreSQL']
     },
     {
-        company: 'Coherent Solutions, Inc.',
-        companyLogo: 'https://www.coherentsolutions.com/hubfs/favicon-96x96.png',
+        company: companies.CoherentSolutions,
         role: 'Software Engineer',
         start: 'Feb 2026',
         end: 'Apr 2026',
@@ -43,8 +42,7 @@ export const experience: ExperienceItem[] = [
         tech: ['.NET Core', 'Azure Cloud Services', 'SQL Server', 'Dapper', 'xUnit', 'Angular', 'AI Development']
     },
     {
-        company: 'DataArt Solutions, Inc.',
-        companyLogo: 'https://www.dataart.com/favicon.ico',
+        company: companies.DataArt,
         role: 'Software Engineer',
         start: 'Feb 2024',
         end: 'Feb 2026',
@@ -59,8 +57,7 @@ export const experience: ExperienceItem[] = [
         tech: ['.NET Core 6-9', '.NET Framework 4.7', 'Angular', 'React', 'knockout.js', 'Azure', 'mediaMTX', 'EventStore', 'RavenDB', 'xUnit', 'SQL Server', 'AI Development']
     },
     {
-        company: 'Vector Software, Ltd.',
-        companyLogo: 'https://vector-software.com/wp-content/uploads/2023/07/cropped-favicon-32x32.png',
+        company: companies.VectorSoftware,
         role: 'Automation QA Engineer',
         start: 'Aug 2022',
         end: 'Dec 2022',

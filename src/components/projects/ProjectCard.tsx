@@ -21,10 +21,10 @@ const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
             <div className="relative w-full h-44 bg-gray-100 dark:bg-slate-700 overflow-hidden shrink-0">
                 <img src={thumb} alt={`${project.title} thumbnail`} className="w-full h-full object-cover" />
                 <div className="absolute left-3 top-3 flex items-center gap-2 bg-white/85 dark:bg-slate-900/80 backdrop-blur-sm rounded-full px-3 py-1">
-                    <img src={project.companyLogo} alt={project.company} className="w-5 h-5 rounded-full" />
+                    <img src={project.company.logo} alt={project.company.name} className="w-5 h-5 rounded-full" />
                     <div className="text-xs leading-tight">
                         <div className="font-semibold flex items-center gap-2">
-                            <span>{project.company}</span>
+                            <span>{project.company.name}</span>
                             <div className="flex items-center">
                                 {project.country && <Flag code={project.country} size="sm" />}
                             </div>

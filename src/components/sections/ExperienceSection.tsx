@@ -17,14 +17,14 @@ export const ExperienceSection = () => {
 
         return (
             <article
-                key={`${it.company}-${it.start}`}
+                key={`${it.company.name}-${it.start}`}
                 className="mb-4 border border-gray-200 dark:border-slate-700 rounded-xl p-4 bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition-shadow"
             >
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    {it.companyLogo && (
-                        <img src={it.companyLogo} alt={it.company} className="w-6 h-6 rounded-full" />
+                    {it.company.logo && (
+                        <img src={it.company.logo} alt={it.company.name} className="w-6 h-6 rounded-full" />
                     )}
-                    <h4 className="font-semibold">{it.company}</h4>
+                    <h4 className="font-semibold">{it.company.name}</h4>
                     <div className="ml-auto flex items-center gap-1.5">
                         {locationText && (
                             <span className="text-xs text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-slate-700 px-2 py-0.5 rounded-full inline-flex items-center gap-1.5">

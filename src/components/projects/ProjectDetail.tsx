@@ -134,11 +134,11 @@ const ProjectDetail: React.FC<Props> = ({ project, onClose, onNavigate, siblings
                 {/* Sticky header */}
                 <div className="flex items-center justify-between gap-3 px-5 py-3 border-b border-gray-100 dark:border-slate-700 flex-shrink-0">
                     <div className="flex items-center gap-3 min-w-0">
-                        <img src={project.companyLogo} alt={project.company} className="w-8 h-8 rounded-full flex-shrink-0" />
+                        <img src={project.company.logo} alt={project.company.name} className="w-8 h-8 rounded-full flex-shrink-0" />
                         <div className="min-w-0">
                             <h3 id="project-detail-title" className="font-bold text-gray-900 dark:text-gray-50 truncate leading-tight">{project.title}</h3>
                             <p className="text-xs text-gray-500 dark:text-gray-400 truncate flex items-center gap-1.5">
-                                <span>{project.company} · {period}</span>
+                                <span>{project.company.name} · {period}</span>
                                 {project.teamSize !== undefined && (
                                     <>
                                         <span aria-hidden="true">·</span>
