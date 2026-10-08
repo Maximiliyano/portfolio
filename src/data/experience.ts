@@ -59,8 +59,8 @@ export const experience: ExperienceItem[] = [
     {
         company: companies.VectorSoftware,
         role: 'Automation QA Engineer',
-        start: 'Aug 2022',
-        end: 'Dec 2022',
+        start: 'Aug 2021',
+        end: 'Dec 2023',
         location: 'Hybrid',
         city: 'Lviv',
         country: 'UA',
