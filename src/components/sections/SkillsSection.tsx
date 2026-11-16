@@ -23,7 +23,7 @@ export const SkillsSection = () => {
             id="skills"
             title="Skills"
             meta={
-                <div className="flex items-center gap-3 text-xs text-gray-400 dark:text-gray-500">
+                <div className="flex items-center gap-3 text-xs font-mono text-[var(--muted)]">
                     <span>{skills.length} categories</span>
                     <span>&middot;</span>
                     <span>{totalSkills} technologies</span>
@@ -32,9 +32,9 @@ export const SkillsSection = () => {
         >
             <div className="flex flex-wrap gap-1.5 mb-4">
                 {topSkills.map(s => (
-                    <span key={s.name} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-slate-700">
+                    <span key={s.name} className="chip gap-1.5 !text-[var(--text)]">
                         {s.name}
-                        <span className="text-teal-500 dark:text-teal-400">{s.years}yr{s.years !== 1 ? 's' : ''}</span>
+                        <span className="text-[var(--accent)]">{s.years}yr{s.years !== 1 ? 's' : ''}</span>
                     </span>
                 ))}
             </div>

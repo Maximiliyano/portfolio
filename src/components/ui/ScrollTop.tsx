@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaChevronUp } from 'react-icons/fa';
+import { scrollToTop } from '../../lib/smoothScroll';
 
 const ScrollTop: React.FC = () => {
     const [visible, setVisible] = useState(false);
@@ -18,8 +19,8 @@ const ScrollTop: React.FC = () => {
     return (
         <button
             aria-label="Scroll to top"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed right-4 bottom-16 z-50 w-11 h-11 rounded-full bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 shadow-lg flex items-center justify-center transition-transform transform hover:translate-y-[-4px]"
+            onClick={scrollToTop}
+            className="glass glass-hover fixed right-4 bottom-16 z-50 w-11 h-11 rounded-full text-[var(--accent)] flex items-center justify-center hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400"
             title="Back to top"
         >
             <FaChevronUp />

@@ -9,7 +9,7 @@ export const ThemeToggle = () => {
             onClick={toggle}
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="p-2 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-slate-700"
+            className="glass glass-hover w-9 h-9 flex items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400"
             style={{ color: 'var(--text)' }}
         >
             {theme === 'dark' ? <FiSun size={18} /> : <FiMoon size={18} />}

@@ -13,14 +13,15 @@ const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
     return (
         <article
             onClick={() => onClick?.(project)}
-            className="group h-full flex flex-col bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer overflow-hidden"
+            className="group glass glass-hover lift-hover h-full flex flex-col rounded-2xl cursor-pointer overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400"
             role={onClick ? 'button' : undefined}
             tabIndex={onClick ? 0 : undefined}
             aria-label={onClick ? `View details: ${project.title}` : undefined}
         >
-            <div className="relative w-full h-44 bg-gray-100 dark:bg-slate-700 overflow-hidden shrink-0">
-                <img src={thumb} alt={`${project.title} thumbnail`} className="w-full h-full object-cover" />
-                <div className="absolute left-3 top-3 flex items-center gap-2 bg-white/85 dark:bg-slate-900/80 backdrop-blur-sm rounded-full px-3 py-1">
+            <div className="relative w-full h-44 bg-[var(--glass-strong)] overflow-hidden shrink-0">
+                <img src={thumb} alt={`${project.title} thumbnail`} className="w-full h-full object-cover transition-transform duration-[600ms] group-hover:scale-105" />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[var(--bg)]/70 via-transparent to-transparent" />
+                <div className="absolute left-3 top-3 flex items-center gap-2 glass !bg-[var(--surface)] rounded-full px-3 py-1">
                     <img src={project.company.logo} alt={project.company.name} className="w-5 h-5 rounded-full" />
                     <div className="text-xs leading-tight">
                         <div className="font-semibold flex items-center gap-2">
@@ -29,7 +30,7 @@ const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
                                 {project.country && <Flag code={project.country} size="sm" />}
                             </div>
                         </div>
-                        <div className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
+                        <div className="font-mono text-[0.68rem] text-[var(--muted)] flex items-center gap-1.5">
                             <span>{period}</span>
                             {project.teamSize !== undefined && (
                                 <>
@@ -48,28 +49,28 @@ const ProjectCard: React.FC<Props> = ({ project, onClick }) => {
             <div className="flex flex-col flex-1 p-4 gap-2">
                 <div className="flex flex-wrap items-center gap-1.5">
                     {project.role && (
-                        <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300">
+                        <span className="chip !text-[var(--accent)] !border-[color-mix(in_srgb,var(--accent)_40%,transparent)]">
                             {project.role}
                         </span>
                     )}
                 </div>
 
-                <h3 className="font-semibold text-gray-900 dark:text-gray-50 leading-snug">{project.title}</h3>
+                <h3 className="font-display font-semibold leading-snug">{project.title}</h3>
 
-                <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2 flex-1">{project.summary}</p>
+                <p className="text-sm text-[var(--muted)] line-clamp-2 flex-1">{project.summary}</p>
 
                 <div className="flex flex-wrap gap-1.5 pt-1">
                     {project.tech.slice(0, 5).map(t => (
-                        <span key={t} className="px-2 py-0.5 text-xs rounded-md bg-cyan-100 dark:bg-cyan-900 text-cyan-600 dark:text-cyan-300">
+                        <span key={t} className="chip">
                             {t}
                         </span>
                     ))}
                 </div>
 
                 <div className="mt-auto pt-2 flex justify-end">
-                    <span className="inline-flex items-center gap-1 text-xs font-medium text-teal-600 dark:text-teal-400 group-hover:underline">
+                    <span className="inline-flex items-center gap-1 font-mono text-xs font-medium text-[var(--accent)] group-hover:underline">
                         View details
-                        <FiArrowRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+                        <FiArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
                 </div>
             </div>

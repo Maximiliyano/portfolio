@@ -11,9 +11,7 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     const [theme, setTheme] = useState<Theme>(() => {
-        const stored = localStorage.getItem('theme') as Theme | null;
-        if (stored === 'light' || stored === 'dark') return stored;
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        return localStorage.getItem('portfolio-theme') === 'dark' ? 'dark' : 'light';
     });
 
     useEffect(() => {
@@ -23,10 +21,13 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
         } else {
             root.classList.remove('dark');
         }
-        localStorage.setItem('theme', theme);
     }, [theme]);
 
-    const toggle = () => setTheme(t => (t === 'dark' ? 'light' : 'dark'));
+    const toggle = () => setTheme(t => {
+        const next = t === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('portfolio-theme', next);
+        return next;
+    });
 
     return (
         <ThemeContext.Provider value={{ theme, toggle }}>

@@ -28,7 +28,7 @@ export const ProjectsSection: React.FC<Props> = ({ projects, totalProjects, onSe
             id="projects"
             title="Featured Projects"
             meta={
-                <div className="flex items-center gap-3 text-xs text-gray-400 dark:text-gray-500">
+                <div className="flex items-center gap-3 text-xs font-mono text-[var(--muted)]">
                     <span>{headlineCount} {headlineCount === 1 ? 'project' : 'projects'}</span>
                     <span>·</span>
                     <span>{totalLabel} total</span>
@@ -36,11 +36,11 @@ export const ProjectsSection: React.FC<Props> = ({ projects, totalProjects, onSe
             }
         >
             {projects.length === 0 ? (
-                <div className="rounded-xl border border-dashed border-gray-200 dark:border-slate-700 p-8 text-center text-sm text-gray-500 dark:text-gray-400">
+                <div className="rounded-2xl border border-dashed border-[var(--border-strong)] p-8 text-center text-sm font-mono text-[var(--muted)]">
                     No projects match the selected domains.
                 </div>
             ) : (
-                <Suspense fallback={<div className="h-48 bg-gray-50 dark:bg-slate-800 rounded-xl animate-pulse" />}>
+                <Suspense fallback={<div className="h-48 glass rounded-2xl animate-pulse" />}>
                     <FeaturedCarousel projects={projects} onSelect={onSelect} paused={paused} />
                 </Suspense>
             )}

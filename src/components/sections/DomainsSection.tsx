@@ -25,7 +25,7 @@ export const DomainsSection: React.FC<Props> = ({ selected, onToggle, onClear })
             id="domains"
             title="Domains of Expertise"
             meta={
-                <div className="flex items-center gap-3 text-xs text-gray-400 dark:text-gray-500">
+                <div className="flex items-center gap-3 text-xs font-mono text-[var(--muted)]">
                     <span>{domains.length} domains</span>
                     {hasSelection && (
                         <>
@@ -40,14 +40,14 @@ export const DomainsSection: React.FC<Props> = ({ selected, onToggle, onClear })
                     <button
                         type="button"
                         onClick={onClear}
-                        className="text-xs text-teal-600 dark:text-teal-400 hover:underline"
+                        className="font-mono text-xs text-[var(--accent)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 rounded"
                     >
                         Clear filter
                     </button>
                 ) : null
             }
         >
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+            <p className="text-sm text-[var(--muted)] mb-3">
                 Pick one or more to filter the projects above.
             </p>
 
@@ -55,13 +55,16 @@ export const DomainsSection: React.FC<Props> = ({ selected, onToggle, onClear })
                 {domains.map(d => {
                     const checked = selected.has(d.id);
                     const count = counts[d.id] ?? 0;
+                    const isAi = d.id === 'ai-ml';
                     return (
                         <label
                             key={d.id}
-                            className={`flex items-start gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${
+                            className={`glass glass-hover lift-hover flex items-start gap-3 p-3 rounded-full sm:rounded-2xl cursor-pointer focus-within:ring-2 focus-within:ring-teal-400 ${
                                 checked
-                                    ? 'border-teal-400 bg-teal-50 dark:bg-teal-900/20 dark:border-teal-700'
-                                    : 'border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700/60'
+                                    ? 'border-[var(--accent)] bg-[color-mix(in_srgb,var(--accent)_14%,transparent)]'
+                                    : isAi
+                                        ? 'border-[color-mix(in_srgb,var(--accent)_45%,transparent)]'
+                                        : ''
                             }`}
                         >
                             <input
@@ -72,11 +75,11 @@ export const DomainsSection: React.FC<Props> = ({ selected, onToggle, onClear })
                                 aria-label={d.label}
                             />
                             <span className="flex-1">
-                                <span className="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                                <span className={`flex items-center gap-2 text-sm font-medium ${isAi ? 'text-[var(--accent)]' : ''}`}>
                                     {d.label}
-                                    <span className="text-xs text-gray-500 dark:text-gray-400">({count})</span>
+                                    <span className="text-xs text-[var(--muted)]">({count})</span>
                                 </span>
-                                <span className="text-xs text-gray-500 dark:text-gray-400">{d.description}</span>
+                                <span className="text-xs text-[var(--muted)]">{d.description}</span>
                             </span>
                         </label>
                     );

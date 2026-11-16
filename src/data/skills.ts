@@ -3,6 +3,15 @@ export type SkillGroup = { group: string; items: Skill[] };
 
 export const skills: SkillGroup[] = [
     {
+        group: 'AI & Agents',
+        items: [
+            { name: 'Claude / AI-assisted dev', years: 2 },
+            { name: 'Semantic Kernel', years: 1 },
+            { name: 'MCP', years: 1 },
+            { name: 'Codemie', years: 1 }
+        ]
+    },
+    {
         group: 'Languages',
         items: [
             { name: 'C#', years: 5 },

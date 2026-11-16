@@ -141,7 +141,7 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect, paused =
                     style={{
                         gap: `${gap}px`,
                         transform: `translateX(${trackTranslate}px)`,
-                        transition: dragging ? 'none' : 'transform 600ms cubic-bezier(.22,.9,.32,1)',
+                        transition: dragging ? 'none' : 'transform 700ms cubic-bezier(0.65, 0, 0.35, 1)',
                         touchAction: 'pan-y',
                         willChange: 'transform'
                     }}
@@ -150,7 +150,7 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect, paused =
                         <div
                             key={p.id}
                             style={{ width: `${slideWidth}px`, flex: '0 0 auto' }}
-                            className={`transition-[transform,opacity] duration-500 ${i === index ? 'scale-100 opacity-100' : 'scale-[0.96] opacity-50'}`}>
+                            className={`transition-[scale,opacity] duration-[700ms] ${i === index ? 'scale-100 opacity-100' : 'scale-[0.96] opacity-50'}`}>
                             <ProjectCard project={p} onClick={onSelect} />
                         </div>
                     ))}
@@ -162,7 +162,7 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect, paused =
                     <button
                         aria-label="Previous"
                         onClick={prev}
-                        className="w-8 h-8 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700 shadow border border-gray-200 dark:border-slate-600 transition-colors"
+                        className="glass glass-hover w-8 h-8 flex items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400"
                     >
                         <FaChevronLeft size={12} />
                     </button>
@@ -173,7 +173,7 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect, paused =
                                 key={p.id}
                                 onClick={() => setIndex(i)}
                                 aria-label={`Go to slide ${i + 1}`}
-                                className={`rounded-full transition-all duration-300 ${i === index ? 'bg-teal-500 w-5 h-2' : 'bg-gray-300 dark:bg-slate-600 w-2 h-2'}`}
+                                className={`rounded-full transition-all duration-300 ${i === index ? 'bg-[var(--accent)] w-5 h-2' : 'bg-[var(--border-strong)] w-2 h-2'}`}
                             />
                         ))}
                     </div>
@@ -181,7 +181,7 @@ export const FeaturedCarousel: React.FC<Props> = ({ projects, onSelect, paused =
                     <button
                         aria-label="Next"
                         onClick={next}
-                        className="w-8 h-8 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700 shadow border border-gray-200 dark:border-slate-600 transition-colors"
+                        className="glass glass-hover w-8 h-8 flex items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400"
                     >
                         <FaChevronRight size={12} />
                     </button>

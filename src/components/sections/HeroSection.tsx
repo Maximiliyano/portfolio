@@ -1,32 +1,76 @@
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { FiArrowRight } from 'react-icons/fi';
 import site from '../../data/site';
+import { useTypewriter } from '../../hooks/useTypewriter';
+import { EASE_IN_OUT } from '../../lib/motion';
 import { Container } from '../layout/Container';
 import { ContactLinks } from '../ui/ContactLinks';
 import ResumeButton from '../ui/ResumeButton';
 
-export const HeroSection = () => (
-    <Container id="hero" className="flex flex-col sm:flex-row items-stretch gap-6 border-b border-gray-200 dark:border-slate-700 py-6">
-        <div className="shrink-0 mx-auto sm:mx-0">
-            <img
-                src={site.avatarUrl}
-                loading="lazy"
-                alt={site.name}
-                className="w-36 sm:w-48 h-full object-cover rounded-xl border border-gray-200 dark:border-slate-600 shadow-md"
-            />
-        </div>
-        <div className="flex-1 min-w-0">
-            <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-50">{site.name}</h1>
-            <div className="mt-1.5 mb-3">
-                <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-medium rounded-full ${site.openToOpportunities ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300' : 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300'}`}>
-                    <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${site.openToOpportunities ? 'bg-emerald-500' : 'bg-red-500'}`} />
-                    {site.openToOpportunities ? 'Open to opportunities' : 'Employed. Not looking for new opportunities'}
-                </span>
+const fadeUp = (delay: number) => ({
+    initial: { opacity: 0, y: 18 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, delay, ease: EASE_IN_OUT },
+});
+
+export const HeroSection = () => {
+    const tagline = useTypewriter(site.taglines);
+
+    const { scrollY } = useScroll();
+    const avatarY = useSpring(useTransform(scrollY, [0, 700], [0, -50]), { stiffness: 90, damping: 24, mass: 0.5 });
+
+    return (
+        <Container id="hero" className="pt-8 sm:pt-14 pb-4">
+            <div className="flex flex-col-reverse md:flex-row md:items-center gap-10">
+                <div className="flex-1 min-w-0">
+                    <motion.h1 {...fadeUp(0)} className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05]">
+                        {site.name}
+                    </motion.h1>
+
+                    <motion.p {...fadeUp(0.08)} className="mt-3 text-xl sm:text-2xl font-medium text-[var(--accent)]">
+                        {site.title}
+                    </motion.p>
+
+                    <motion.p {...fadeUp(0.16)} className="mt-5 h-7 text-base" aria-label={site.taglines.join('. ')}>
+                        <span aria-hidden="true">
+                            {tagline}
+                            <span className="cursor-blink text-[var(--accent)]">|</span>
+                        </span>
+                    </motion.p>
+
+                    <motion.p {...fadeUp(0.24)} className="mt-3 max-w-xl text-[var(--muted)] leading-relaxed">
+                        {site.coverletter}
+                    </motion.p>
+
+                    <motion.p {...fadeUp(0.3)} className="mt-5 text-sm text-[var(--muted)]">
+                        {site.location} · {site.openToOpportunities ? 'Open to new roles' : 'Not looking for new roles right now'}
+                    </motion.p>
+
+                    <motion.div {...fadeUp(0.36)} className="mt-6 flex flex-wrap items-center gap-3">
+                        <a href="#experience" className="btn-primary">
+                            View experience <FiArrowRight size={16} />
+                        </a>
+                        <ResumeButton />
+                        <ContactLinks variant="block" />
+                    </motion.div>
+                </div>
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    style={{ y: avatarY }}
+                    transition={{ duration: 0.7, ease: EASE_IN_OUT }}
+                    className="shrink-0 mx-auto md:mx-0"
+                >
+                    <img
+                        src={site.avatarUrl}
+                        alt={site.name}
+                        width={224}
+                        height={288}
+                        className="w-48 h-60 sm:w-56 sm:h-72 object-cover rounded-2xl border border-[var(--border-strong)] bg-[var(--glass-strong)] shadow-[0_24px_48px_-28px_rgba(14,22,32,0.45)]"
+                    />
+                </motion.div>
             </div>
-            <p className="text-base text-gray-600 dark:text-gray-400">{site.title} · {site.location}</p>
-            <p className="mt-2 mb-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{site.coverletter}</p>
-            <div className="mb-4">
-                <ContactLinks variant="block" />
-            </div>
-            <ResumeButton />
-        </div>
-    </Container>
-);
+        </Container>
+    );
+};

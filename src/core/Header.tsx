@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react';
 import ResumeButton from '../components/ui/ResumeButton';
 import { ThemeToggle } from '../components/ui/ThemeToggle';
+import { MotionToggle } from '../components/ui/MotionToggle';
 import { useTheme } from '../context/ThemeContext';
-import { FiCode, FiBriefcase, FiZap, FiMenu, FiX, FiTag } from 'react-icons/fi';
+import { FiCpu, FiTerminal, FiBox, FiCode, FiBriefcase, FiZap, FiUser, FiMenu, FiX } from 'react-icons/fi';
 import logoDark from '../assets/favicon.ico';
 import logoLight from '../assets/favicon-white.ico';
 import site from '../data/site';
 
 const NAV_ITEMS = [
-    { href: '#projects', icon: FiCode, label: 'Projects' },
-    { href: '#domains', icon: FiTag, label: 'Domains' },
     { href: '#experience', icon: FiBriefcase, label: 'Experience' },
+    { href: '#ai', icon: FiCpu, label: 'AI' },
+    { href: '#terminal', icon: FiTerminal, label: 'Terminal' },
+    { href: '#built', icon: FiBox, label: 'Built by me' },
+    { href: '#projects', icon: FiCode, label: 'Client work' },
     { href: '#skills', icon: FiZap, label: 'Skills' },
+    { href: '#about', icon: FiUser, label: 'About' },
 ];
 
 export const Header = () => {
@@ -25,40 +29,35 @@ export const Header = () => {
     }, [logo]);
 
     useEffect(() => {
-        const onResize = () => { if (window.innerWidth >= 768) setMenuOpen(false); };
+        const onResize = () => { if (window.innerWidth >= 1024) setMenuOpen(false); };
         window.addEventListener('resize', onResize);
         return () => window.removeEventListener('resize', onResize);
     }, []);
 
     return (
         <header
-            className="fixed top-0 left-0 w-full backdrop-blur-md z-50"
+            className="fixed top-0 left-0 w-full z-50"
             style={{ backgroundColor: 'var(--surface)', color: 'var(--text)', borderBottom: '1px solid var(--border)' }}
         >
-            <div className="flex justify-between items-center w-full max-w-6xl mx-auto px-4 py-3">
-                <a href="/" aria-label="Portfolio Logo" className="relative flex items-center gap-2">
-                    <img src={logo} alt="Logo" className="w-6 h-6" />
-                    <span className="font-semibold">Portfolio</span>
-                    {site.openToOpportunities && (
-                        <span className="absolute -top-1 -right-3 w-2 h-2 rounded-full bg-emerald-500 animate-pulse" title="Open to opportunities" />
-                    )}
-                </a>
+            <div className="flex justify-between items-center w-full max-w-6xl mx-auto px-4 py-3 gap-4">
+                <a href="/" aria-label="Home" className="font-display text-base font-semibold shrink-0">{site.name}</a>
 
-                <nav className="hidden md:flex items-center gap-8">
+                <nav className="hidden lg:flex items-center gap-6" aria-label="Primary">
                     {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
-                        <a key={href} href={href} className="flex items-center gap-1.5 text-sm font-semibold hover:text-teal-500 transition-colors">
-                            <Icon size={15} />
+                        <a key={href} href={href} className="flex items-center gap-1.5 text-xs font-medium text-[var(--muted)] hover:text-[var(--accent)] transition-colors">
+                            <Icon size={14} />
                             {label}
                         </a>
                     ))}
                 </nav>
 
-                <ResumeButton variant="header" />
                 <div className="flex items-center gap-2">
+                    <ResumeButton variant="header" />
+                    <MotionToggle />
                     <ThemeToggle />
 
                     <button
-                        className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
+                        className="lg:hidden p-2 rounded-lg hover:bg-[var(--glass-strong)] transition-colors"
                         onClick={() => setMenuOpen(o => !o)}
                         aria-label="Toggle menu"
                         aria-expanded={menuOpen}
@@ -70,16 +69,16 @@ export const Header = () => {
 
             {menuOpen && (
                 <div
-                    className="md:hidden border-t"
-                    style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}
+                    className="lg:hidden border-t"
+                    style={{ borderColor: 'var(--border)' }}
                 >
-                    <nav className="flex flex-col gap-1 py-2 max-w-6xl mx-auto px-4">
+                    <nav className="flex flex-col gap-1 py-2 max-w-6xl mx-auto px-4" aria-label="Mobile">
                         {NAV_ITEMS.map(({ href, icon: Icon, label }) => (
                             <a
                                 key={href}
                                 href={href}
                                 onClick={() => setMenuOpen(false)}
-                                className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-teal-500 transition-colors text-sm font-medium"
+                                className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-[var(--glass-strong)] hover:text-[var(--accent)] transition-colors text-sm font-medium"
                             >
                                 <Icon size={18} />
                                 {label}

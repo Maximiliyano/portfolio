@@ -2,10 +2,17 @@ import React, { Suspense, useCallback, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import projects from '../../data/projects';
 import { domains, type DomainId } from '../../data/domains';
+import site from '../../data/site';
 import { Section } from '../../components/layout/Section';
+import SmoothScroll from '../../components/ui/SmoothScroll';
+import ScrollProgress from '../../components/ui/ScrollProgress';
+import ScrollBackground from '../../components/ui/ScrollBackground';
 import { Header } from '../../core/Header';
 import { Footer } from '../../core/Footer';
 import { HeroSection } from '../../components/sections/HeroSection';
+import { AiStackSection } from '../../components/sections/AiStackSection';
+import { AboutSection } from '../../components/sections/AboutSection';
+import { BuiltBySection } from '../../components/sections/BuiltBySection';
 import { ProjectsSection } from '../../components/sections/ProjectsSection';
 import { DomainsSection } from '../../components/sections/DomainsSection';
 import { ExperienceSection } from '../../components/sections/ExperienceSection';
@@ -13,6 +20,7 @@ import { SkillsSection } from '../../components/sections/SkillsSection';
 import { CtaSection } from '../../components/sections/CtaSection';
 
 const ProjectDetail = React.lazy(() => import('../../components/projects/ProjectDetail'));
+const TerminalSection = React.lazy(() => import('../../components/sections/TerminalSection'));
 
 const validDomainIds = new Set<string>(domains.map(d => d.id));
 
@@ -58,6 +66,11 @@ export const Home: React.FC = () => {
     const selected = selectedIndex >= 0 ? filteredProjects[selectedIndex] : null;
 
     const handleSelect = useCallback((id: string) => setSelectedId(id), []);
+
+    const handleOpenFromAi = useCallback((id: string) => {
+        if (!filteredProjects.some(p => p.id === id)) setSelectedDomains(new Set());
+        setSelectedId(id);
+    }, [filteredProjects, setSelectedDomains]);
     const handleClose = useCallback(() => setSelectedId(null), []);
 
     const handleNavigate = useCallback((delta: 1 | -1) => {
@@ -86,9 +99,18 @@ export const Home: React.FC = () => {
 
     return (
         <>
+            <SmoothScroll />
+            <ScrollProgress />
+            <ScrollBackground video={site.backgroundVideo} />
             <Header />
-            <Section>
+            <Section className="px-4 mt-20 mb-16 max-w-6xl mx-auto">
                 <HeroSection />
+                <ExperienceSection />
+                <AiStackSection onOpenProject={handleOpenFromAi} />
+                <Suspense fallback={<div className="mt-14 h-96" aria-hidden="true" />}>
+                    <TerminalSection />
+                </Suspense>
+                <BuiltBySection />
                 <ProjectsSection
                     projects={filteredProjects}
                     totalProjects={projects.length}
@@ -100,8 +122,8 @@ export const Home: React.FC = () => {
                     onToggle={handleToggleDomain}
                     onClear={handleClearDomains}
                 />
-                <ExperienceSection />
                 <SkillsSection />
+                <AboutSection />
                 <CtaSection />
             </Section>
             <Footer />

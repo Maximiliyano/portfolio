@@ -5,12 +5,19 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="./src/assets/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Maksym Vasylyshyn | Portfolio</title>
+  <title>Maksym Vasylyshyn | AI-Driven Full-Stack Engineer</title>
+  <meta name="description" content="Maksym Vasylyshyn - AI-driven full-stack engineer building LLM agents, MCP-powered products and production .NET/React systems." />
+  <meta name="theme-color" content="#f6f7f9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <script>
     (function () {
-      var stored = localStorage.getItem('theme');
-      var dark = stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      var dark = localStorage.getItem('portfolio-theme') === 'dark';
       if (dark) document.documentElement.classList.add('dark');
+      var motion = localStorage.getItem('motion');
+      var reduced = motion === 'reduced' || (motion !== 'full' && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+      if (reduced) document.documentElement.classList.add('reduce-motion');
     })();
   </script>
 </head>
