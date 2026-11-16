@@ -125,6 +125,11 @@ p {
     opacity: 0.35;
 }
 
+.bg-ambient canvas {
+    -webkit-mask-image: linear-gradient(90deg, #000 calc(50% - 600px), rgba(0, 0, 0, 0.16) calc(50% - 552px), rgba(0, 0, 0, 0.16) calc(50% + 552px), #000 calc(50% + 600px));
+    mask-image: linear-gradient(90deg, #000 calc(50% - 600px), rgba(0, 0, 0, 0.16) calc(50% - 552px), rgba(0, 0, 0, 0.16) calc(50% + 552px), #000 calc(50% + 600px));
+}
+
 /* Surfaces */
 .glass {
     background-color: var(--glass);

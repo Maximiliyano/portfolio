@@ -52,7 +52,7 @@ export const Header = () => {
                 </nav>
 
                 <div className="flex items-center gap-2">
-                    <ResumeButton variant="header" />
+                    <span className="hidden sm:block"><ResumeButton variant="header" /></span>
                     <MotionToggle />
                     <ThemeToggle />
 

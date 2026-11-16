@@ -1,6 +1,11 @@
+import { useMemo } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
 import site from '../../data/site';
+import projects from '../../data/projects';
+import experience from '../../data/experience';
+import stack from '../../data/stack';
+import { rangeFrom, totalMonths } from '../../lib/dateMath';
 import { useTypewriter } from '../../hooks/useTypewriter';
 import { EASE_IN_OUT } from '../../lib/motion';
 import { Container } from '../layout/Container';
@@ -15,6 +20,16 @@ const fadeUp = (delay: number) => ({
 
 export const HeroSection = () => {
     const tagline = useTypewriter(site.taglines);
+
+    const stats = useMemo(() => {
+        const years = Math.floor(totalMonths(experience.map(e => rangeFrom(e.start, e.end))) / 12);
+        return [
+            { value: `${years}+`, label: 'years in software engineering' },
+            { value: String(projects.length), label: 'client projects delivered' },
+            { value: String(new Set(projects.flatMap(p => p.domains)).size), label: 'industries' },
+            { value: String(new Set(projects.map(p => p.country)).size), label: 'client countries' },
+        ];
+    }, []);
 
     const { scrollY } = useScroll();
     const avatarY = useSpring(useTransform(scrollY, [0, 700], [0, -50]), { stiffness: 90, damping: 24, mass: 0.5 });
@@ -53,6 +68,15 @@ export const HeroSection = () => {
                         <ResumeButton />
                         <ContactLinks variant="block" />
                     </motion.div>
+
+                    <motion.ul {...fadeUp(0.44)} aria-label="Technology stack" className="mt-7 flex flex-wrap gap-x-5 gap-y-3 max-w-2xl">
+                        {stack.map(({ name, Icon, color }) => (
+                            <li key={name} className="inline-flex items-center gap-2 text-sm text-[var(--muted)]">
+                                <Icon size={20} style={{ color }} aria-hidden="true" />
+                                {name}
+                            </li>
+                        ))}
+                    </motion.ul>
                 </div>
 
                 <motion.div
@@ -71,6 +95,15 @@ export const HeroSection = () => {
                     />
                 </motion.div>
             </div>
+
+            <motion.dl {...fadeUp(0.5)} className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 border-t border-[var(--border-strong)] pt-6">
+                {stats.map(s => (
+                    <div key={s.label} className="flex flex-col-reverse">
+                        <dt className="mt-1 text-sm text-[var(--muted)]">{s.label}</dt>
+                        <dd className="font-display text-3xl sm:text-4xl font-bold">{s.value}</dd>
+                    </div>
+                ))}
+            </motion.dl>
         </Container>
     );
 };
