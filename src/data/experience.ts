@@ -16,30 +16,18 @@ export const experience: ExperienceItem[] = [
     {
         company: companies.EPAM,
         role: 'Software Engineer',
-        start: 'Apr 2026',
+        start: 'Feb 2026',
         end: 'Present',
         location: 'Hybrid',
         city: 'Lviv',
         country: 'UA',
         bullets: [
             'Medical software development for a US-based client in the healthcare industry;',
-            'Migration of legacy database MSSQL to PostgreSQL with backward compatibility.'
-        ],
-        tech: ['.NET Core', 'Azure Cloud Services', 'SQL Server', 'AWS', 'PostgreSQL']
-    },
-    {
-        company: companies.CoherentSolutions,
-        role: 'Software Engineer',
-        start: 'Feb 2026',
-        end: 'Apr 2026',
-        location: 'Remote',
-        city: 'Lviv',
-        country: 'UA',
-        bullets: [
+            'Migration of legacy database MSSQL to PostgreSQL with backward compatibility;',
             'Designed and implemented RESTful APIs for frontend and external integrations;',
             'Wrote unit tests and participate in code reviews.'
         ],
-        tech: ['.NET Core', 'Azure Cloud Services', 'SQL Server', 'Dapper', 'xUnit', 'Angular', 'AI Development']
+        tech: ['.NET Core', 'Azure Cloud Services', 'SQL Server', 'AWS', 'PostgreSQL']
     },
     {
         company: companies.DataArt,

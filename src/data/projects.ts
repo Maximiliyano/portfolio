@@ -46,7 +46,7 @@ export const projects: Project[] = [
         title: 'Public Transport and Schedule System',
         start: 'Feb 2026',
         end: 'Apr 2026',
-        company: companies.CoherentSolutions,
+        company: companies.EPAM,
         country: 'CA',
         clientType: 'Public Transport Operator',
         domains: ['transportation', 'ai-ml'],
